@@ -58,8 +58,10 @@ class JobPositions extends RestController
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['position_id'] == NULL || $data['position'] == NULL || $data['salary']
-            == NULL || $data['desc'] == NULL
+            $data['position_id'] == NULL ||
+            $data['position'] == NULL ||
+            $data['salary'] == NULL ||
+            $data['desc'] == NULL
         ) {
             $this->response(
                 [
@@ -113,7 +115,12 @@ class JobPositions extends RestController
 
         );
         //Jika field position_id tidak diisi
-        if ($position_id == NULL) {
+        if (
+            $position_id == NULL ||
+            $data['position'] == NULL ||
+            $data['salary'] == NULL ||
+            $data['desc'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $position_id,

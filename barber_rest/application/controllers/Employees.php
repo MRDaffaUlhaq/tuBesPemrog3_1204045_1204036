@@ -49,11 +49,9 @@ class Employees extends RestController
         $data = array(
             'emp_id' => $this->post('emp_id'),
             'position_id' => $this->post('position_id'),
-            'username' => $this->post('username'),
-            'password' => $this->post('password'),
+            'emp_name' => $this->post('emp_name'),
             'telp' => $this->post('telp'),
             'address' => $this->post('address'),
-            'email' => $this->post('email'),
             'bank_acc' => $this->post('bank_acc')
         );
 
@@ -62,12 +60,11 @@ class Employees extends RestController
         //Validasi Jika semua data wajib diisi
         if (
             $data['position_id'] == NULL ||
-            $data['username'] == NULL ||
-            $data['password'] == NULL ||
+            $data['emp_name'] == NULL ||
             $data['telp'] == NULL ||
             $data['address'] == NULL ||
-            $data['bank_acc'] == NULL ||
-            $data['email'] == NULL
+            $data['bank_acc'] == NULL
+
         ) {
             $this->response(
                 [
@@ -116,15 +113,19 @@ class Employees extends RestController
         $emp_id = $this->put('emp_id');
         $data = array(
             'position_id' => $this->put('position_id'),
-            'username' => $this->put('username'),
-            'password' => $this->put('password'),
+            'emp_name' => $this->put('emp_name'),
             'telp' => $this->put('telp'),
             'address' => $this->put('address'),
-            'email' => $this->put('email'),
             'bank_acc' => $this->put('bank_acc')
         );
         //Jika field emp_id tidak diisi
-        if ($emp_id == NULL) {
+        if (
+            $emp_id == NULL ||
+            $data['emp_name'] == NULL ||
+            $data['telp'] == NULL ||
+            $data['address'] == NULL ||
+            $data['bank_acc'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $emp_id,

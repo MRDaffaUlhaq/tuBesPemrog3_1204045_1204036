@@ -117,7 +117,12 @@ class Customers extends RestController
             // 'email' => $this->put('email')
         );
         //Jika field customer_id tidak diisi
-        if ($customer_id == NULL) {
+        if (
+            $customer_id == NULL ||
+            $data['name'] == NULL ||
+            $data['email'] == NULL ||
+            $data['telp'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $customer_id,

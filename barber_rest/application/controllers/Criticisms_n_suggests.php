@@ -59,8 +59,11 @@ class Criticisms_n_suggests extends RestController
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['cns_id'] == NULL || $data['customer_id'] == NULL || $data['criticism']
-            == NULL || $data['suggest'] == NULL || $data['rate'] == NULL
+            $data['cns_id'] == NULL ||
+            $data['customer_id'] == NULL ||
+            $data['criticism'] == NULL ||
+            $data['suggest'] == NULL ||
+            $data['rate'] == NULL
         ) {
             $this->response(
                 [
@@ -115,12 +118,18 @@ class Criticisms_n_suggests extends RestController
 
         );
         //Jika field cns_id tidak diisi
-        if ($cns_id == NULL) {
+        if (
+            $cns_id == NULL ||
+            $data['customer_id'] == NULL ||
+            $data['criticism'] == NULL ||
+            $data['suggest'] == NULL ||
+            $data['rate'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $cns_id,
                     'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'cns_id Tidak Boleh Kosong',
+                    'message' => 'Data Tidak Boleh Kosong',
                 ],
                 RestController::HTTP_BAD_REQUEST
             );

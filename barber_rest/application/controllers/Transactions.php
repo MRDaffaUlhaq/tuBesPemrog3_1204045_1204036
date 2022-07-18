@@ -60,9 +60,13 @@ class Transactions extends RestController
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['t_id'] == NULL || $data['customer_id'] == NULL || $data['emp_id']
-            == NULL || $data['service_id'] == NULL || $data['date'] == NULL || $data['total'] ==
-            NULL || $data['time'] == NULL
+            $data['t_id'] == NULL ||
+            $data['customer_id'] == NULL ||
+            $data['emp_id'] == NULL ||
+            $data['service_id'] == NULL ||
+            $data['date'] == NULL ||
+            $data['total'] == NULL ||
+            $data['time'] == NULL
         ) {
             $this->response(
                 [
@@ -118,7 +122,15 @@ class Transactions extends RestController
             'total' => $this->put('total')
         );
         //Jika field t_id tidak diisi
-        if ($t_id == NULL) {
+        if (
+            $t_id == NULL ||
+            $data['customer_id'] == NULL ||
+            $data['emp_id'] == NULL ||
+            $data['service_id'] == NULL ||
+            $data['date'] == NULL ||
+            $data['total'] == NULL ||
+            $data['time'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $t_id,

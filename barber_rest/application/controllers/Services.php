@@ -114,7 +114,12 @@ class Services extends RestController
 
         );
         //Jika field service_id tidak diisi
-        if ($service_id == NULL) {
+        if (
+            $service_id == NULL ||
+            $data['service_name'] == NULL ||
+            $data['price'] == NULL ||
+            $data['desc'] == NULL
+        ) {
             $this->response(
                 [
                     'status' => $service_id,
