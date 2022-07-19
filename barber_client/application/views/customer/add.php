@@ -2,55 +2,57 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Pelayanan</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('service'); ?>">List Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
+            <li class="breadcrumb-item"><a>Pelanggan</a></li>
+            <li class="breadcrumb-item "><a href="<?= base_url('job'); ?>">List Data</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Data</li>
         </ol>
     </nav>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mx-auto">
             <div class="card shadow mb-5 bg-white rounded">
                 <div class="card-body">
                     <?php
                     //create form
                     $attributes = array('method' => "post", "autocomplete" => "off");
-                    echo form_open('', $attributes); ?>
+                    echo form_open('', $attributes);
+                    ?>
                     <div class="form-group row">
-                        <label for="service_id" class="col-sm-2 col-form-label">ID Pelayanan</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="service_id" name="service_id" value=" <?= $data_service['service_id']; ?>" readonly>
-                            <small class="text-danger">
-                                <?php echo form_error('service_id') ?>
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="service_name" class="col-sm-2 col-formlabel">Pelayanan</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="service_name" name="service_name" value=" <?= $data_service['service_name']; ?>">
-                            <small class="text-danger">
-                                <?php echo form_error('service_name') ?>
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="desc" class="col-sm-2 col-formlabel">Deskripsi</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="desc" name="desc" rows="3"><?= $data_service['desc']; ?></textarea>
-                            <small class="text-danger">
-                                <?php echo form_error('desc') ?>
-                            </small>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label for="price" class="col-sm-2 col-form-label">Harga</label>
+                        <label for="customer_id" class="col-sm-2 col-form-label">ID Pelanggan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="price" name="price" value="<?= $data_service['price']; ?>">
+                            <input type="text" class="form-control" id="customer_id" name="customer_id" value="<?= set_value('customer_id'); ?>">
                             <small class="text-danger">
-                                <?php echo form_error('price') ?>
+                                <?php echo form_error('customer_id') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Nama Pelanggan</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" value=" <?= set_value('name'); ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('name') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="telp" class="col-sm-2 col-form-label">Telepon</label>
+                        <div class="col-sm-5">
+                            <input type="number" class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('telp') ?>
+                            </small>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-5">
+                            <input type="number" class="form-control" id="email" name="email" value="<?= set_value('email'); ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('email') ?>
                             </small>
                         </div>
                     </div>

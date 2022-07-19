@@ -2,7 +2,7 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Service</a></li>
+            <li class="breadcrumb-item"><a>Pelayanan</a></li>
             <li class="breadcrumb-item "><a href="<?= base_url('service'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Data</li>
         </ol>
@@ -17,7 +17,7 @@
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
-                        <label for="service_id" class="col-sm-2 col-form-label">Service ID</label>
+                        <label for="service_id" class="col-sm-2 col-form-label">ID Pelayanan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="service_id" name="service_id" value="<?= set_value('service_id'); ?>">
                             <small class="text-danger">
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="service_name" class="col-sm-2 col-form-label">Service Name</label>
+                        <label for="service_name" class="col-sm-2 col-form-label">Pelayanan</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="service_name" name="service_name" value=" <?= set_value('service_name'); ?>">
                             <small class="text-danger">
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="desc" class="col-sm-2 col-form-label">Description</label>
+                        <label for="desc" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="desc" name="desc" rows="3"><?= set_value('desc'); ?></textarea>
                             <small class="text-danger">
@@ -48,7 +48,7 @@
 
 
                     <div class="form-group row">
-                        <label for="price" class="col-sm-2 col-form-label">Price</label>
+                        <label for="price" class="col-sm-2 col-form-label">Harga</label>
                         <div class="col-sm-5">
                             <input type="number" class="form-control" id="price" name="price" value="<?= set_value('price'); ?>">
                             <small class="text-danger">

@@ -3,13 +3,13 @@
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Pelayanan</a></li>
+            <li class="breadcrumb-item"><a>Pegawai</a></li>
             <li class="breadcrumb-item active" aria-current="page">List Data</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-dark mb-2" href="<?= base_url('service/add/') ?>"><i class="fa fa-plus-square mr-1"></i>Tambah Data</a>
+            <a class="btn btn-dark mb-2" href="<?= base_url('employees/add/') ?>"><i class="fa fa-plus-square mr-1"></i>Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flash data (pesan saat data error)-->
                 <?php if ($this->session->flashdata('message')) : ?>
@@ -28,23 +28,23 @@
                             <thead>
                                 <tr class="bg-dark text-white text-center">
                                     <th>NOMOR</th>
-                                    <th>PELAYANAN</th>
-                                    <th>HARGA</th>
+                                    <th>NAMA PEGAWAI</th>
+                                    <th>ALAMAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($data_service as $row) :
+                                foreach ($data_employees as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['service_id'] ?></td>
-                                        <td><?= $row['service_name'] ?></td>
-                                        <td class="text-justify"><?= $row['price'] ?></td>
+                                        <td><?= $row['emp_id'] ?></td>
+                                        <td><?= $row['emp_name'] ?></td>
+                                        <td class="text-justify"><?= $row['address'] ?></td>
                                         <td class="text-center">
-                                            <a href="<?= base_url('Service/detail/' . $row['service_id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
-                                            <a href="<?= base_url('Service/edit/' . $row['service_id']) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit "></i></a>
-                                            <a href="<?= base_url('Service/delete/' . $row['service_id']) ?>" class="btn btn-danger btn-sm item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url('Employees/detail/' . $row['emp_id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                                            <a href="<?= base_url('Employees/edit/' . $row['emp_id']) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit "></i></a>
+                                            <a href="<?= base_url('Employees/delete/' . $row['emp_id']) ?>" class="btn btn-danger btn-sm item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

@@ -12,10 +12,22 @@
         <ul class="navbar-nav">
 
             <li class="nav-item active">
-                <a class="nav-link" href="<?= base_url('service'); ?>">Service</a>
+                <a class="nav-link" href="<?= base_url('service'); ?>">Pelayanan</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('job'); ?>">Jabatan</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('customer'); ?>">Pelanggan</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('employees'); ?>">Pegawai</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('transaction'); ?>">Transaksi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="<?= base_url('cns'); ?>">Kritik & Saran</a>
             </li>
         </ul>
     </div>

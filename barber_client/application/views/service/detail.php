@@ -1,8 +1,8 @@
-<div class="container pt-3">
+<div class="container">
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Service</a></li>
+            <li class="breadcrumb-item"><a>Pelayanan</a></li>
             <li class="breadcrumb-item "><a href="<?= base_url('service'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Detail Data</li>
         </ol>
@@ -12,7 +12,7 @@
 
             <div class="card shadow mb-5 bg-white rounded">
                 <div class="card-header bg-dark text-white">
-                    Detail Data service
+                    Detail Data Pelayanan
                 </div>
                 <div class="card-body">
 

@@ -15,7 +15,7 @@ class Criticisms_n_suggests_model extends CI_Model
             $this->db->where('cns_id', $cns_id);
         }
         $this->db->join('customers', 'criticisms_n_suggests.customer_id = customers.customer_id');
-        $this->db->select('cns_id, name, criticism, suggest, rate');
+        $this->db->select('cns_id, customers.customer_id, name, criticism, suggest, rate');
         $query = $this->db->get()->result_array();
         return $query;
     }
