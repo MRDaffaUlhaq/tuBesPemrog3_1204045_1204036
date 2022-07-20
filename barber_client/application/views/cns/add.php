@@ -2,8 +2,8 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent ml-n3">
-            <li class="breadcrumb-item"><a>Pegawai</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('employees'); ?>">List Data</a></li>
+            <li class="breadcrumb-item"><a>Kritik dan Saran</a></li>
+            <li class="breadcrumb-item "><a href="<?= base_url('cns'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Data</li>
         </ol>
     </nav>
@@ -17,9 +17,26 @@
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
-                        <label for="emp_id" class="col-sm-2 col-form-label">ID Pegawai</label>
+                        <label for="cns_id" class="col-sm-2 col-form-label">ID Kritik & Saran</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="cns_id" name="cns_id" value=" <?= set_value('cns_id'); ?>">
+                            <small class="text-danger">
+                                <?php echo form_error('cns_id') ?>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="emp_id" class="col-sm-2 col-form-label">Nama Pelanggan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="emp_id" name="emp_id" value="<?= set_value('emp_id'); ?>">
+                            <select name="customer_id" class="form-select" id="name" aria-label="Default select example">
+                                <option>-- Pilih Pelanggan --</option>
+                                <?php
+                                foreach ($data_customer as $row) :
+                                ?>
+                                    <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <small class="text-danger">
                                 <?php echo form_error('emp_id') ?>
                             </small>
@@ -27,56 +44,35 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="position_id" class="col-sm-2 col-form-label">Jabatan</label>
+                        <label for="criticism" class="col-sm-2 col-form-label">Kritik</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="position_id" name="position_id" value=" <?= set_value('position_id'); ?>">
+                            <textarea type="text" class="form-control" id="criticism" name="criticism" value=" <?= set_value('criticism'); ?>"></textarea>
                             <small class="text-danger">
-                                <?php echo form_error('position_id') ?>
+                                <?php echo form_error('criticism') ?>
                             </small>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="emp_name" class="col-sm-2 col-form-label">Nama Pegawai</label>
+                        <label for="suggest" class="col-sm-2 col-form-label">Saran</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="emp_name" name="emp_name" rows="3"><?= set_value('emp_name'); ?></textarea>
+                            <textarea class="form-control" id="suggest" name="suggest" rows="3"><?= set_value('suggest'); ?></textarea>
                             <small class="text-danger">
-                                <?php echo form_error('emp_name') ?>
+                                <?php echo form_error('suggest') ?>
                             </small>
                         </div>
                     </div>
 
 
                     <div class="form-group row">
-                        <label for="telp" class="col-sm-2 col-form-label">No Telepon</label>
+                        <label for="rate" class="col-sm-2 col-form-label">Rate</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
+                            <input type="number" class="form-control" id="rate" name="rate" value="<?= set_value('rate'); ?>">
                             <small class="text-danger">
-                                <?php echo form_error('telp') ?>
+                                <?php echo form_error('rate') ?>
                             </small>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="address" class="col-sm-2 col-form-label">Alamat</label>
-                        <div class="col-sm-5">
-                            <input type="number" class="form-control" id="address" name="address" value="<?= set_value('address'); ?>">
-                            <small class="text-danger">
-                                <?php echo form_error('address') ?>
-                            </small>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="bank_acc" class="col-sm-2 col-form-label">No Rekening</label>
-                        <div class="col-sm-5">
-                            <input type="number" class="form-control" id="bank_acc" name="bank_acc" value="<?= set_value('bank_acc'); ?>">
-                            <small class="text-danger">
-                                <?php echo form_error('bank_acc') ?>
-                            </small>
-                        </div>
-                    </div>
-
 
                     <div class="form-group row">
                         <div class="col-sm-10 offset-md-2">

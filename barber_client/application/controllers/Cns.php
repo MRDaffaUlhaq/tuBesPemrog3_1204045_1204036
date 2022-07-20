@@ -8,6 +8,7 @@ class Cns extends CI_Controller
         parent::__construct();
 
         $this->load->model('Cns_model'); //load model Cns
+        $this->load->model('Customer_model'); //load model Cns
         $this->load->library('form_validation'); //load form validation
     }
 
@@ -15,7 +16,7 @@ class Cns extends CI_Controller
     public function index()
     {
 
-        $data['title'] = "List Data Pelayanan";
+        $data['title'] = "List Data Kritik dan Saran";
 
         $data['data_cns'] = $this->Cns_model->getAll();
 
@@ -30,7 +31,7 @@ class Cns extends CI_Controller
     public function detail($cns_id)
     {
 
-        $data['title'] = "Detail Data Pegawai";
+        $data['title'] = "Detail Data Kritik dan Saran";
 
         $data['data_cns'] = $this->Cns_model->getById($cns_id);
 
@@ -44,10 +45,11 @@ class Cns extends CI_Controller
     public function add()
     {
 
-        $data['title'] = "Tambah Data Pegawai";
+        $data['title'] = "Tambah Data Kritik & Saran";
+        $data['data_customer'] = $this->Customer_model->getAll();
 
         $this->form_validation->set_rules('cns_id', 'Cns ID', 'trim|numeric');
-        $this->form_validation->set_rules('customer_id', 'Customer IdD', 'trim|required');
+        $this->form_validation->set_rules('customer_id', 'Customer Id', 'trim|required');
         $this->form_validation->set_rules('criticism', 'Criticism', 'trim|required');
         $this->form_validation->set_rules('suggest', 'Suggest', 'trim|required');
         $this->form_validation->set_rules('rate', 'Rate', 'trim|required');
@@ -65,10 +67,10 @@ class Cns extends CI_Controller
                 "customer_id" => $this->input->post('customer_id'),
                 "criticism" => $this->input->post('criticism'),
                 "suggest" => $this->input->post('suggest'),
-                "date" => $this->input->post('date'),
+                "rate" => $this->input->post('rate'),
                 "KEY" => "ulbi123"
             ];
-
+            // var_dump($data);
             $insert = $this->Cns_model->save($data);
             if ($insert['response_code'] === 201) {
                 $this->session->set_flashdata('flash', 'Data Ditambahkan');
@@ -86,12 +88,14 @@ class Cns extends CI_Controller
     public function edit($cns_id)
     {
 
-        $data['title'] = "Ubah Data Pegawai";
+        $data['title'] = "Ubah Data Kritik & Saran";
+
+        $data['data_allCns'] = $this->Customer_model->getAll();
 
         $data['data_cns'] = $this->Cns_model->getById($cns_id);
 
         $this->form_validation->set_rules('cns_id', 'Cns ID', 'trim|numeric');
-        $this->form_validation->set_rules('customer_id', 'Customer IdD', 'trim|required');
+        $this->form_validation->set_rules('customer_id', 'Customer ID', 'trim|required');
         $this->form_validation->set_rules('criticism', 'Criticism', 'trim|required');
         $this->form_validation->set_rules('suggest', 'Suggest', 'trim|required');
         $this->form_validation->set_rules('rate', 'Rate', 'trim|required');
@@ -108,11 +112,12 @@ class Cns extends CI_Controller
                 "customer_id" => $this->input->post('customer_id'),
                 "criticism" => $this->input->post('criticism'),
                 "suggest" => $this->input->post('suggest'),
-                "date" => $this->input->post('date'),
+                "rate" => $this->input->post('rate'),
                 "KEY" => "ulbi123"
             ];
 
             $update = $this->Cns_model->update($data);
+            // var_dump($update);
             if ($update['response_code'] === 201) {
                 $this->session->set_flashdata('flash', 'Data Berhasil Diubah');
                 redirect('Cns');

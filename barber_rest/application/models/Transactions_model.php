@@ -17,7 +17,7 @@ class Transactions_model extends CI_Model
         $this->db->join('customers', 'transactions.customer_id = customers.customer_id');
         $this->db->join('employees', 'transactions.emp_id = employees.emp_id');
         $this->db->join('services', 'transactions.service_id = services.service_id');
-        $this->db->select('t_id, name, service_name, emp_name, date, time, total');
+        $this->db->select('t_id, name, customers.customer_id,services.service_id, service_name,employees.emp_id, emp_name, date, time, total');
         $query = $this->db->get()->result_array();
         return $query;
     }

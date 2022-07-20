@@ -8,6 +8,9 @@ class Transaction extends CI_Controller
         parent::__construct();
 
         $this->load->model('Transaction_model'); //load model Transaction
+        $this->load->model('Customer_model'); //load model Customer
+        $this->load->model('Employees_model'); //load model Employees
+        $this->load->model('Service_model'); //load model Service
         $this->load->library('form_validation'); //load form validation
     }
 
@@ -93,6 +96,9 @@ class Transaction extends CI_Controller
         $data['title'] = "Ubah Data Transaksi";
 
         $data['data_transaction'] = $this->Transaction_model->getById($t_id);
+        $data['data_customer'] = $this->Customer_model->getAll();
+        $data['data_service'] = $this->Service_model->getAll();
+        $data['data_employees'] = $this->Employees_model->getAll();
 
         $this->form_validation->set_rules('t_id', 'Transaction ID', 'trim|numeric');
         $this->form_validation->set_rules('customer_id', 'Customer ID', 'trim|required');
