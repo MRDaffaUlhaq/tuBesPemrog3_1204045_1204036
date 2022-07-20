@@ -8,19 +8,19 @@ require APPPATH . 'libraries/RestController.php';
 
 use chriskacerguis\RestServer\RestController;
 
-class Services extends RestController
+class Users extends RestController
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Services_model');
+        $this->load->model('Users_model');
     }
     //fungsi CRUD 
 
-    public function serv_get()
+    public function user_get()
     {
-        $service_id = $this->get('service_id');
-        $data = $this->Services_model->getDataServices($service_id);
+        $user_id = $this->get('user_id');
+        $data = $this->Users_model->getDataUsers($user_id);
         //Jika variabel $data terdapat data di dalamnya 
         if ($data) {
             $this->response(
@@ -42,26 +42,24 @@ class Services extends RestController
         }
     }
 
-    //tambah data serv
+    //tambah data user
 
-    public function serv_post()
+    public function user_post()
     {
         $data = array(
-            'service_id' => $this->post('service_id'),
-            'service_name' => $this->post('service_name'),
-            'desc' => $this->post('desc'),
-            'price' => $this->post('price')
-
+            'user_id' => $this->post('user_id'),
+            'username' => $this->post('username'),
+            'password' => $this->post('password'),
+            'email' => $this->post('email')
         );
-        $cek_data = $this->Services_model->getDataServices($this->post('service_id'));
+        $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
 
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['service_id'] == NULL ||
-            $data['service_name'] == NULL ||
-            $data['price'] == NULL ||
-            $data['desc'] == NULL
+            $data['username'] == NULL ||
+            $data['password'] == NULL ||
+            $data['email'] == NULL
         ) {
             $this->response(
                 [
@@ -83,7 +81,7 @@ class Services extends RestController
             );
 
             //Jika data tersimpan
-        } elseif ($this->Services_model->insertServices($data) > 0) {
+        } elseif ($this->Users_model->insertUsers($data) > 0) {
             $this->response(
                 [
                     'status' => true,
@@ -104,38 +102,37 @@ class Services extends RestController
         }
     }
 
-    //edit data serv
-    public function serv_put()
+    //edit data user
+    public function user_put()
     {
-        $service_id = $this->put('service_id');
+        $user_id = $this->put('user_id');
         $data = array(
-            'service_name' => $this->put('service_name'),
-            'price' => $this->put('price'),
-            'desc' => $this->put('desc')
-
+            'username' => $this->put('username'),
+            'password' => $this->put('password'),
+            'email' => $this->put('email')
         );
-        //Jika field service_id tidak diisi
+        //Jika field user_id tidak diisi
         if (
-            $service_id == NULL ||
-            $data['service_name'] == NULL ||
-            $data['price'] == NULL ||
-            $data['desc'] == NULL
+            $user_id == NULL ||
+            $data['username'] == NULL ||
+            $data['password'] == NULL ||
+            $data['email'] == NULL
         ) {
             $this->response(
                 [
-                    'status' => $service_id,
+                    'status' => $user_id,
                     'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'service_id Tidak Boleh Kosong',
+                    'message' => 'Ups! Mohon isi semua data',
                 ],
                 RestController::HTTP_BAD_REQUEST
             );
             //Jika data berhasil berubah
-        } elseif ($this->Services_model->updateServices($data, $service_id) > 0) {
+        } elseif ($this->Users_model->updateUsers($data, $user_id) > 0) {
             $this->response(
                 [
                     'status' => true,
                     'response_code' => RestController::HTTP_CREATED,
-                    'message' => 'Data Services Dengan service_id ' . $service_id . ' Berhasil Diubah',
+                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Berhasil Diubah',
                 ],
                 RestController::HTTP_CREATED
             );
@@ -151,27 +148,27 @@ class Services extends RestController
         }
     }
 
-    public function serv_delete()
+    public function user_delete()
     {
-        $service_id = $this->delete('service_id');
+        $user_id = $this->delete('user_id');
 
-        //Jika field service_id tidak diisi
-        if ($service_id == NULL) {
+        //Jika field user_id tidak diisi
+        if ($user_id == NULL) {
             $this->response(
                 [
-                    'status' => $service_id,
+                    'status' => $user_id,
                     'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'service_id Tidak Boleh Kosong',
+                    'message' => 'user_id Tidak Boleh Kosong',
                 ],
                 RestController::HTTP_BAD_REQUEST
             );
             //Kondisi ketika OK
-        } elseif ($this->Services_model->deleteServices($service_id) > 0) {
+        } elseif ($this->Users_model->deleteUsers($user_id) > 0) {
             $this->response(
                 [
                     'status' => true,
                     'response_code' => RestController::HTTP_OK,
-                    'message' => 'Data Services Dengan service_id ' . $service_id . ' Berhasil Dihapus',
+                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Berhasil Dihapus',
                 ],
                 RestController::HTTP_OK
             );
@@ -181,7 +178,7 @@ class Services extends RestController
                 [
                     'status' => false,
                     'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Data Services Dengan service_id ' . $service_id . ' Tidak Ditemukan',
+                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Tidak Ditemukan',
                 ],
                 RestController::HTTP_BAD_REQUEST
             );

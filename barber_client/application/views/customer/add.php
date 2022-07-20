@@ -1,7 +1,7 @@
 <div class="container pt-3">
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb ">
+        <ol class="breadcrumb bg-transparent ml-n3">
             <li class="breadcrumb-item"><a>Pelanggan</a></li>
             <li class="breadcrumb-item "><a href="<?= base_url('job'); ?>">List Data</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Data</li>

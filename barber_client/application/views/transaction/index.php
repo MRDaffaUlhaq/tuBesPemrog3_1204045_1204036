@@ -2,7 +2,7 @@
     <h3><?= $title ?></h3>
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb ">
+        <ol class="breadcrumb bg-transparent ml-n3">
             <li class="breadcrumb-item"><a>Transaksi</a></li>
             <li class="breadcrumb-item active" aria-current="page">List Data</li>
         </ol>
