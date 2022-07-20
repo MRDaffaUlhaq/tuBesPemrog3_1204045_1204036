@@ -16,14 +16,15 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes); ?>
                     <div class="form-group row">
-                        <label for="position_id" class="col-sm-2 col-form-label">ID Jabatan</label>
+                        <!-- <label for="position_id" class="col-sm-2 col-form-label">ID Jabatan</label> -->
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="position_id" name="position_id" value=" <?= $data_job['position_id']; ?>" readonly>
+                            <input hidden type="text" class="form-control" id="position_id" name="position_id" value=" <?= $data_job['position_id']; ?>" readonly>
                             <small class="text-danger">
                                 <?php echo form_error('position_id') ?>
                             </small>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="position" class="col-sm-2 col-formlabel">Jabatan</label>
                         <div class="col-sm-10">

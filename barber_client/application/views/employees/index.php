@@ -29,18 +29,19 @@
                                 <tr class="bg-dark text-white text-center">
                                     <th>NOMOR</th>
                                     <th>NAMA PEGAWAI</th>
-                                    <th>ALAMAT</th>
+                                    <th>JABATAN</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($data_employees as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['emp_id'] ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $row['emp_name'] ?></td>
-                                        <td class="text-justify"><?= $row['address'] ?></td>
+                                        <td><?= $row['position'] ?></td>
                                         <td class="text-center">
                                             <a href="<?= base_url('Employees/detail/' . $row['emp_id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                                             <a href="<?= base_url('Employees/edit/' . $row['emp_id']) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit "></i></a>

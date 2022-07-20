@@ -16,9 +16,9 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes); ?>
                     <div class="form-group row">
-                        <label for="service_id" class="col-sm-2 col-form-label">ID Pelayanan</label>
+                        <!-- <label for="service_id" class="col-sm-2 col-form-label">ID Pelayanan</label> -->
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="service_id" name="service_id" value=" <?= $data_service['service_id']; ?>" readonly>
+                            <input type="text" hidden class="form-control" id="service_id" name="service_id" value=" <?= $data_service['service_id']; ?>" readonly>
                             <small class="text-danger">
                                 <?php echo form_error('service_id') ?>
                             </small>

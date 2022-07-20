@@ -55,12 +55,13 @@ class Transactions extends RestController
             'time' => $this->post('time'),
             'total' => $this->post('total')
         );
-
-        $cek_data = $this->Transactions_model->getDataTransactions($this->post('t_id'));
+        $cek_data = "";
+        if ($data['t_id'] != NULL) {
+            $cek_data = $this->Transactions_model->getDataTransactions($this->post('t_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['t_id'] == NULL ||
             $data['customer_id'] == NULL ||
             $data['emp_id'] == NULL ||
             $data['service_id'] == NULL ||

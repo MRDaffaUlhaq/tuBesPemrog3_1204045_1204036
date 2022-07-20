@@ -17,7 +17,7 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes);
                     ?>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="service_id" class="col-sm-2 col-form-label">ID Pelayanan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="service_id" name="service_id" value="<?= set_value('service_id'); ?>">
@@ -25,7 +25,7 @@
                                 <?php echo form_error('service_id') ?>
                             </small>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row">
                         <label for="service_name" class="col-sm-2 col-form-label">Pelayanan</label>

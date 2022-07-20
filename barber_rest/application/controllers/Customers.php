@@ -51,12 +51,11 @@ class Customers extends RestController
             'name' => $this->post('name'),
             'telp' => $this->post('telp'),
             'email' => $this->post('email'),
-            // 'agama' => $this->post('agama'),
-            // 'no_hp' => $this->post('no_hp'),
-            // 'email' => $this->post('email')
         );
-
-        $cek_data = $this->Customers_model->getDataCustomers($this->post('customer_id'));
+        $cek_data = "";
+        if ($data['customer_id'] != NULL) {
+            $cek_data = $this->Customers_model->getDataCustomers($this->post('customer_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (
@@ -113,8 +112,7 @@ class Customers extends RestController
             'name' => $this->put('name'),
             'email' => $this->put('email'),
             'telp' => $this->put('telp')
-            // 'no_hp' => $this->put('no_hp'),
-            // 'email' => $this->put('email')
+
         );
         //Jika field customer_id tidak diisi
         if (

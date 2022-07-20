@@ -25,7 +25,10 @@ class Transaction extends CI_Controller
         //load to view
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu', $data);
-        $this->load->view('transaction/index', $data);
+        if ($data != null) {
+            $this->load->view('transaction/index', $data);
+        }
+
         $this->load->view('templates/footer', $data);
     }
 
@@ -48,6 +51,9 @@ class Transaction extends CI_Controller
     {
 
         $data['title'] = "Tambah Data Transaksi";
+        $data['data_customer'] = $this->Customer_model->getAll();
+        $data['data_service'] = $this->Service_model->getAll();
+        $data['data_employees'] = $this->Employees_model->getAll();
 
         $this->form_validation->set_rules('t_id', 'Transaction ID', 'trim|numeric');
         $this->form_validation->set_rules('customer_id', 'Customer ID', 'trim|required');

@@ -128,6 +128,9 @@ class Customer extends CI_Controller
         if ($delete['response_code'] === 200) {
             $this->session->set_flashdata('flash', 'Data Berhasil Dihapus');
             redirect('customer');
+        } elseif ($delete['response_code'] === 500) {
+            $this->session->set_flashdata('flash', 'Data Sedang Digunakan');
+            redirect('job');
         } else {
             $this->session->set_flashdata('message', 'Data Gagal Dihapus!');
             redirect('customer');

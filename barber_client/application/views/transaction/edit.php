@@ -19,9 +19,9 @@
                     foreach ($data_transaction as $data_transaction) :
                     ?>
                         <div class="form-group row">
-                            <label for="t_id" class="col-sm-2 col-form-label">ID Transaksi</label>
+                            <!-- <label for="t_id" class="col-sm-2 col-form-label">ID Transaksi</label> -->
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="t_id" name="t_id" value=" <?= $data_transaction['t_id']; ?>" readonly>
+                                <input hidden type="text" class="form-control" id="t_id" name="t_id" value=" <?= $data_transaction['t_id']; ?>" readonly>
                                 <small class="text-danger">
                                     <?php echo form_error('t_id') ?>
                                 </small>
@@ -36,7 +36,7 @@
                                     <?php
                                     foreach ($data_customer as $row) :
                                     ?>
-                                        <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?></option>
+                                        <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?> </option>
                                     <?php endforeach; ?>
                                 </select>
                                 <small class="text-danger">
@@ -53,7 +53,7 @@
                                     <?php
                                     foreach ($data_employees as $row) :
                                     ?>
-                                        <option value="<?= $row['emp_id']; ?>"><?= $row['emp_name'] ?></option>
+                                        <option value="<?= $row['emp_id']; ?>"><?= $row['emp_name'] ?> - <?= $row['position'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <small class="text-danger">

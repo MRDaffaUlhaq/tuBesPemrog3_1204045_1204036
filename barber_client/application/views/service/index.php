@@ -35,10 +35,11 @@
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($data_service as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['service_id'] ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $row['service_name'] ?></td>
                                         <td class="text-justify"><?= $row['price'] ?></td>
                                         <td class="text-center">

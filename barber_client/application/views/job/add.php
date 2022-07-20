@@ -16,7 +16,7 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes);
                     ?>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="position_id" class="col-sm-2 col-form-label">ID Jabatan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="position_id" name="position_id" value="<?= set_value('position_id'); ?>">
@@ -24,7 +24,7 @@
                                 <?php echo form_error('position_id') ?>
                             </small>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row">
                         <label for="position" class="col-sm-2 col-form-label">Nama Jabatan</label>
@@ -50,7 +50,7 @@
                     <div class="form-group row">
                         <label for="salary" class="col-sm-2 col-form-label">Gaji</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="salary" name="salary" value="<?= set_value('salary'); ?>">
+                            <input type="text" class="form-control" id="salary" name="salary" value="<?= set_value('salary'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('salary') ?>
                             </small>

@@ -35,10 +35,11 @@
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($data_job as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['position_id'] ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $row['position'] ?></td>
                                         <td class="text-justify"><?= $row['salary'] ?></td>
                                         <td class="text-center">

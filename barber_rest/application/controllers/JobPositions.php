@@ -53,12 +53,13 @@ class JobPositions extends RestController
             'desc' => $this->post('desc')
 
         );
-
-        $cek_data = $this->JobPositions_model->getDataJobPositions($this->post('position_id'));
+        $cek_data = "";
+        if ($data['position_id'] != NULL) {
+            $cek_data = $this->JobPositions_model->getDataJobPositions($this->post('position_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['position_id'] == NULL ||
             $data['position'] == NULL ||
             $data['salary'] == NULL ||
             $data['desc'] == NULL

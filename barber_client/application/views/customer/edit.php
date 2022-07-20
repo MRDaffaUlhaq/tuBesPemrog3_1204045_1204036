@@ -16,9 +16,9 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes); ?>
                     <div class="form-group row">
-                        <label for="customer_id" class="col-sm-2 col-form-label">ID Pelanggan</label>
+                        <!-- <label for="customer_id" class="col-sm-2 col-form-label">ID Pelanggan</label> -->
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="customer_id" name="customer_id" value=" <?= $data_customer['customer_id']; ?>" readonly>
+                            <input hidden type="text" class="form-control" id="customer_id" name="customer_id" value=" <?= $data_customer['customer_id']; ?>" readonly>
                             <small class="text-danger">
                                 <?php echo form_error('customer_id') ?>
                             </small>
@@ -47,7 +47,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="email" name="email" value="<?= $data_customer['email']; ?>">
+                            <input type="email" class="form-control" id="email" name="email" value="<?= $data_customer['email']; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('email') ?>
                             </small>

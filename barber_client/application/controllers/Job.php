@@ -128,6 +128,9 @@ class Job extends CI_Controller
         if ($delete['response_code'] === 200) {
             $this->session->set_flashdata('flash', 'Data Berhasil Dihapus');
             redirect('job');
+        } elseif ($delete['response_code'] === 500) {
+            $this->session->set_flashdata('flash', 'Data Gagal Dihapus');
+            redirect('job');
         } else {
             $this->session->set_flashdata('message', 'Data Gagal Dihapus!');
             redirect('job');

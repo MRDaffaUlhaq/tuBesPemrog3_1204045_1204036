@@ -8,6 +8,7 @@ class Employees extends CI_Controller
         parent::__construct();
 
         $this->load->model('Employees_model'); //load model Employees
+        $this->load->model('Job_model'); //load model Employees
         $this->load->library('form_validation'); //load form validation
     }
 
@@ -15,7 +16,7 @@ class Employees extends CI_Controller
     public function index()
     {
 
-        $data['title'] = "List Data Pelayanan";
+        $data['title'] = "List Data Pegawai";
 
         $data['data_employees'] = $this->Employees_model->getAll();
 
@@ -45,6 +46,8 @@ class Employees extends CI_Controller
     {
 
         $data['title'] = "Tambah Data Pegawai";
+
+        $data['data_jabatan'] = $this->Job_model->getAll();
 
         $this->form_validation->set_rules('emp_id', 'Employees ID', 'trim|numeric');
         $this->form_validation->set_rules('position_id', 'Position Job', 'trim|required');
@@ -90,6 +93,7 @@ class Employees extends CI_Controller
 
         $data['title'] = "Ubah Data Pegawai";
 
+        $data['data_jabatan'] = $this->Job_model->getAll();
         $data['data_employees'] = $this->Employees_model->getById($emp_id);
 
         $this->form_validation->set_rules('emp_id', 'Employees ID', 'trim|numeric');

@@ -53,12 +53,14 @@ class Services extends RestController
             'price' => $this->post('price')
 
         );
-        $cek_data = $this->Services_model->getDataServices($this->post('service_id'));
-
+        $cek_data = "";
+        if ($data['service_id'] != NULL) {
+            $cek_data = $this->Services_model->getDataServices($this->post('service_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['service_id'] == NULL ||
+            $data['service_id'] != NULL ||
             $data['service_name'] == NULL ||
             $data['price'] == NULL ||
             $data['desc'] == NULL

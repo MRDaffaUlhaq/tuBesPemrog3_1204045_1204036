@@ -17,9 +17,9 @@
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
-                        <label for="cns_id" class="col-sm-2 col-form-label">ID Kritik & Saran</label>
+                        <!-- <label for="cns_id" class="col-sm-2 col-form-label">ID Kritik & Saran</label> -->
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="cns_id" name="cns_id" value=" <?= set_value('cns_id'); ?>">
+                            <input hidden type="text" class="form-control" id="cns_id" name="cns_id" value=" <?= set_value('cns_id'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('cns_id') ?>
                             </small>

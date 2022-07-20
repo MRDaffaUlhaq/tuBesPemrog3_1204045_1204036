@@ -18,8 +18,8 @@
 
                     <h5 class="card-title"><b>ID Pelanggan :</b><br><?= $data_customer['customer_id'] ?></h5>
                     <p class="card-text"><b>Nama Pelanggan :</b><br><?= $data_customer['name'] ?></p>
-                    <p class="card-text"><b>Deskripsi :</b><br><?= $data_customer['telp'] ?></p>
-                    <p class="card-text"><b>Gaji :</b><br><?= $data_customer['email'] ?></p>
+                    <p class="card-text"><b>No Telepon :</b><br><?= $data_customer['telp'] ?></p>
+                    <p class="card-text"><b>Email :</b><br><?= $data_customer['email'] ?></p>
                     <p></p>
                     <a href="<?= base_url(); ?>customer" class="btn btn-secondary">Kembali</a>
                 </div>

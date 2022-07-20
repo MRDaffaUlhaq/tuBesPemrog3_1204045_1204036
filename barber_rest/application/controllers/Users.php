@@ -52,7 +52,10 @@ class Users extends RestController
             'password' => $this->post('password'),
             'email' => $this->post('email')
         );
-        $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
+        $cek_data = "";
+        if ($data['user_id'] != NULL) {
+            $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
+        }
 
 
         //Validasi Jika semua data wajib diisi

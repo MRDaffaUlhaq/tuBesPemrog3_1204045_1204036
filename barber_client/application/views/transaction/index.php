@@ -36,11 +36,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <?php
+                                $no = 1;
                                 foreach ($data_transaction as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['t_id'] ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $row['name'] ?></td>
                                         <td class="text-justify"><?= $row['service_name'] ?></td>
                                         <td><?= $row['date'] ?></td>
@@ -52,6 +54,7 @@
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
+
                             </tbody>
                         </table>
                     </div>

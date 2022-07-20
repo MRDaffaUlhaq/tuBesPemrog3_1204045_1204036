@@ -54,12 +54,13 @@ class Criticisms_n_suggests extends RestController
             'rate' => $this->post('rate'),
 
         );
-
-        $cek_data = $this->Criticisms_n_suggests_model->getDataCns($this->post('cns_id'));
+        $cek_data = "";
+        if ($data['cns_id'] != NULL) {
+            $cek_data = $this->Criticisms_n_suggests_model->getDataCns($this->post('cns_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (
-            $data['cns_id'] == NULL ||
             $data['customer_id'] == NULL ||
             $data['criticism'] == NULL ||
             $data['suggest'] == NULL ||

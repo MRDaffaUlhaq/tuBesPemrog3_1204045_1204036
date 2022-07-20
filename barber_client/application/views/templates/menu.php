@@ -1,14 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light text-black shadow p-3 mb-5 bg-white rounded">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#"><i class="fa fa-crown"></i> King's Barbershop</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<nav class="navbar navbar-expand-md sticky-top navbar-light text-black shadow p-3 mb-5 bg-white rounded flex-column">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="collapsibleNavbar">
+    <a class="navbar-brand font-weight-bold" href="<?= base_url('home'); ?>"><i class="fa fa-crown"></i> King's Barbershop</a>
+    <div class="navbar-collapse collapse justify-content-center" id="collapsingNavbar">
         <ul class="navbar-nav">
 
             <li class="nav-item active">

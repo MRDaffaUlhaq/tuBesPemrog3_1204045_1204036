@@ -30,15 +30,16 @@
                                     <th>NOMOR</th>
                                     <th>NAMA PELANGGAN</th>
                                     <th>TELEPON</th>
-                                    <th>EMAIL</th>
+                                    <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($data_customer as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['customer_id'] ?></td>
+                                        <td><?= $no++; ?></td>
                                         <td><?= $row['name'] ?></td>
                                         <td class="text-justify"><?= $row['telp'] ?></td>
                                         <td class="text-center">

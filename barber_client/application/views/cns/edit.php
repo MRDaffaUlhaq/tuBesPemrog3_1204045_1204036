@@ -19,14 +19,15 @@
                     foreach ($data_cns as $data_cns) :
                     ?>
                         <div class="form-group row">
-                            <label for="cns_id" class="col-sm-2 col-form-label">ID Pelayanan</label>
+                            <!-- <label for="cns_id" class="col-sm-2 col-form-label">ID Pelayanan</label> -->
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="cns_id" name="cns_id" value=" <?= $data_cns['cns_id']; ?>" readonly>
+                                <input hidden type="text" class="form-control" id="cns_id" name="cns_id" value=" <?= $data_cns['cns_id']; ?>" readonly>
                                 <small class="text-danger">
                                     <?php echo form_error('cns_id') ?>
                                 </small>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="customer_id" class="col-sm-2 col-form-label">Pelanggan</label>
                             <div class="col-sm-10">
@@ -43,15 +44,6 @@
                                 </small>
                             </div>
                         </div>
-                        <!-- <div class="form-group row">
-                            <label for="customer_id" class="col-sm-2 col-formlabel">Pelanggan</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="customer_id" name="customer_id" value=" <?= $data_cns['customer_id']; ?>">
-                                <small class="text-danger">
-                                    <?php echo form_error('customer_id') ?>
-                                </small>
-                            </div>
-                        </div> -->
 
                         <div class="form-group row">
                             <label for="criticism" class="col-sm-2 col-formlabel">Kritik</label>

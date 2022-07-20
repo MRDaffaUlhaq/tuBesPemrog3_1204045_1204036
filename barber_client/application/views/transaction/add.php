@@ -17,9 +17,9 @@
                     echo form_open('', $attributes);
                     ?>
                     <div class="form-group row">
-                        <label for="t_id" class="col-sm-2 col-form-label">ID Transaksi</label>
+                        <!-- <label for="t_id" class="col-sm-2 col-form-label">ID Transaksi</label> -->
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="t_id" name="t_id" value="<?= set_value('t_id'); ?>">
+                            <input hidden type="text" class="form-control" id="t_id" name="t_id" value="<?= set_value('t_id'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('t_id') ?>
                             </small>
@@ -27,9 +27,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="customer_id" class="col-sm-2 col-form-label">Pelanggan</label>
+                        <label for="customer_id" class="col-sm-2 col-formlabel">Pelanggan</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="customer_id" name="customer_id" value=" <?= set_value('customer_id'); ?>">
+                            <select name="customer_id" class="form-select" id="customer_id" aria-label="Default select example">
+                                <option>-- Pilih Pelanggan --</option>
+                                <?php
+                                foreach ($data_customer as $row) :
+                                ?>
+                                    <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <small class="text-danger">
                                 <?php echo form_error('customer_id') ?>
                             </small>
@@ -37,20 +44,33 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="emp_id" class="col-sm-2 col-form-label">Pegawai</label>
+                        <label for="emp_id" class="col-sm-2 col-formlabel">Pegawai</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="emp_id" name="emp_id" rows="3"><?= set_value('emp_id'); ?></textarea>
+                            <select name="emp_id" class="form-select" id="emp_id" aria-label="Default select example">
+                                <option>-- Pilih Pegawai Yang Melayani --</option>
+                                <?php
+                                foreach ($data_employees as $row) :
+                                ?>
+                                    <option value="<?= $row['emp_id']; ?>"><?= $row['emp_name'] ?> - <?= $row['position'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <small class="text-danger">
                                 <?php echo form_error('emp_id') ?>
                             </small>
                         </div>
                     </div>
 
-
                     <div class="form-group row">
-                        <label for="service_id" class="col-sm-2 col-form-label">Service</label>
-                        <div class="col-sm-5">
-                            <input type="number" class="form-control" id="service_id" name="service_id" value="<?= set_value('service_id'); ?>">
+                        <label for="service_id" class="col-sm-2 col-formlabel">Service</label>
+                        <div class="col-sm-10">
+                            <select name="service_id" class="form-select" id="service_id" aria-label="Default select example">
+                                <option>-- Pilih Pelayanan --</option>
+                                <?php
+                                foreach ($data_service as $row) :
+                                ?>
+                                    <option value="<?= $row['service_id']; ?>"><?= $row['service_name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <small class="text-danger">
                                 <?php echo form_error('service_id') ?>
                             </small>
@@ -60,7 +80,7 @@
                     <div class="form-group row">
                         <label for="date" class="col-sm-2 col-form-label">Tanggal</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="date" name="date" value="<?= set_value('date'); ?>">
+                            <input type="date" class="form-control" id="date" name="date" value="<?= set_value('date'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('date') ?>
                             </small>
@@ -70,7 +90,7 @@
                     <div class="form-group row">
                         <label for="time" class="col-sm-2 col-form-label">Waktu</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="time" name="time" value="<?= set_value('time'); ?>">
+                            <input type="time" class="form-control" id="time" name="time" value="<?= set_value('time'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('time') ?>
                             </small>
@@ -80,7 +100,7 @@
                     <div class="form-group row">
                         <label for="total" class="col-sm-2 col-form-label">Total</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="total" name="total" value="<?= set_value('total'); ?>">
+                            <input type="text" class="form-control" id="total" name="total" value="<?= set_value('total'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('total') ?>
                             </small>

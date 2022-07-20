@@ -54,8 +54,10 @@ class Employees extends RestController
             'address' => $this->post('address'),
             'bank_acc' => $this->post('bank_acc')
         );
-
-        $cek_data = $this->Employees_model->getDataEmployees($this->post('emp_id'));
+        $cek_data = "";
+        if ($data['emp_id'] != NULL) {
+            $cek_data = $this->Employees_model->getDataEmployees($this->post('emp_id'));
+        }
 
         //Validasi Jika semua data wajib diisi
         if (

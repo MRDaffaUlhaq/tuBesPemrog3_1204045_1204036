@@ -16,7 +16,7 @@ class Cns extends CI_Controller
     public function index()
     {
 
-        $data['title'] = "List Data Kritik dan Saran";
+        $data['title'] = "List Data Kritik & Saran";
 
         $data['data_cns'] = $this->Cns_model->getAll();
 
@@ -31,7 +31,7 @@ class Cns extends CI_Controller
     public function detail($cns_id)
     {
 
-        $data['title'] = "Detail Data Kritik dan Saran";
+        $data['title'] = "Detail Data Kritik & Saran";
 
         $data['data_cns'] = $this->Cns_model->getById($cns_id);
 

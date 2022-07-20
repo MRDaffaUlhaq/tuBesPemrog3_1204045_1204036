@@ -15,7 +15,7 @@ class Employees_model extends CI_Model
             $this->db->where('emp_id', $emp_id);
         }
         $this->db->join('job_positions', 'employees.position_id = job_positions.position_id');
-        $this->db->select('emp_id, emp_name, telp, position, salary, address, bank_acc');
+        $this->db->select('emp_id, job_positions.position_id, emp_name, telp, position, salary, address, bank_acc');
         $query = $this->db->get()->result_array();
         return $query;
     }

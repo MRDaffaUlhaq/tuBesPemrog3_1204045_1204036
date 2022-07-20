@@ -35,10 +35,11 @@
                             </thead>
                             <tbody>
                                 <?php
+                                $no = 1;
                                 foreach ($data_cns as $row) :
                                 ?>
                                     <tr>
-                                        <td><?= $row['cns_id'] ?></td>
+                                        <td> <?= $no++; ?></td>
                                         <td class="text-justify"><?= $row['name'] ?></td>
                                         <td><?= $row['rate'] ?></td>
                                         <td class="text-center">

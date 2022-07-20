@@ -16,7 +16,7 @@
                     $attributes = array('method' => "post", "autocomplete" => "off");
                     echo form_open('', $attributes);
                     ?>
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="customer_id" class="col-sm-2 col-form-label">ID Pelanggan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="customer_id" name="customer_id" value="<?= set_value('customer_id'); ?>">
@@ -24,7 +24,7 @@
                                 <?php echo form_error('customer_id') ?>
                             </small>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nama Pelanggan</label>
@@ -39,7 +39,7 @@
                     <div class="form-group row">
                         <label for="telp" class="col-sm-2 col-form-label">Telepon</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
+                            <input type="text" class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('telp') ?>
                             </small>
@@ -50,7 +50,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-5">
-                            <input type="number" class="form-control" id="email" name="email" value="<?= set_value('email'); ?>">
+                            <input type="email" class="form-control" id="email" name="email" value="<?= set_value('email'); ?>">
                             <small class="text-danger">
                                 <?php echo form_error('email') ?>
                             </small>
