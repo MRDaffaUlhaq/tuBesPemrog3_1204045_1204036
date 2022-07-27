@@ -22,12 +22,13 @@ class Transaction extends CI_Controller
 
         $data['data_transaction'] = $this->Transaction_model->getAll();
 
+        // if ($data['response_code'] === 404) {
+        //     redirect('Home');
+        // }
         //load to view
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu', $data);
-        if ($data != null) {
-            $this->load->view('transaction/index', $data);
-        }
+        $this->load->view('transaction/index', $data);
 
         $this->load->view('templates/footer', $data);
     }

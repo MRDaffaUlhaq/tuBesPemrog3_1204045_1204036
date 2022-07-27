@@ -6,45 +6,30 @@ class Users_model extends CI_Model
 {
     private $_table_users = 'users';
 
-    // get data dari tabel users
-    public function getDataUsers($user_id)
+    // login function
+    public function queryLogin($username, $password)
     {
-        //query builder
-        if ($user_id) {
-            $this->db->from($this->_table_users);
-            $this->db->where('user_id', $user_id);
-            $query = $this->db->get()->row_array();
-            return $query;
-        } else {
-            $this->db->from($this->_table_users);
-            $query = $this->db->get()->result_array();
-            return $query;
-        }
+        return $this->db->query("SELECT user_id FROM users WHERE username = '$username' AND password = '$password'");
     }
 
-    public function insertusers($data)
+    // register
+
+    public function cekUsername($username)
     {
-        //Menggunakan Query Builder
-        $this->db->insert($this->_table_users, $data);
-        return $this->db->affected_rows();
-        // return $query;
+        return $this->db->query("SELECT username FROM users WHERE username = '$username'");
+    }
+    public function cekEmail($email)
+    {
+        return $this->db->query("SELECT email FROM users WHERE email = '$email'");
     }
 
-    //fungsi untuk mengubah data
-    public function updateusers($data, $user_id)
+    public function addUser()
     {
-        //Menggunakan Query Builder
-        $this->db->update($this->_table_users, $data, ['user_id' => $user_id]);
-        return $this->db->affected_rows();
-        // return $query;
-    }
+        $user_id = $_POST['user_id'];
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+        $email = $_POST['email'];
 
-    //fungsi untuk menghapus data
-    public function deleteusers($user_id)
-    {
-        //Menggunakan Query Builder
-        $this->db->delete($this->_table_users, ['user_id' => $user_id]);
-        return $this->db->affected_rows();
-        // return $query;
+        $this->db->query("INSERT INTO users VALUE (user_id = '$user_id', username = '$username', password = '$password', email = '$email')");
     }
 }

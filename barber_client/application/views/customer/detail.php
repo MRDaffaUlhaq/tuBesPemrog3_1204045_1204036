@@ -1,10 +1,10 @@
 <div class="container">
-    <h3><?= $title ?></h3>
+    <h3 class="text-white"><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent ml-n3">
-            <li class="breadcrumb-item"><a>Pelanggan</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('Pelanggan'); ?>">List Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Detail Data</li>
+            <li class="breadcrumb-item"><a class="text-white">Pelanggan</a></li>
+            <li class="breadcrumb-item "><a class="text-white" href="<?= base_url('Pelanggan'); ?>">List Data</a></li>
+            <li class="breadcrumb-item text-white active" aria-current="page">Detail Data</li>
         </ol>
     </nav>
     <div class="row mt-3">

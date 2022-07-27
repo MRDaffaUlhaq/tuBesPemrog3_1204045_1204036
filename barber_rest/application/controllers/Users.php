@@ -15,176 +15,66 @@ class Users extends RestController
         parent::__construct();
         $this->load->model('Users_model');
     }
-    //fungsi CRUD 
 
-    public function user_get()
+    public function login_post()
     {
-        $user_id = $this->get('user_id');
-        $data = $this->Users_model->getDataUsers($user_id);
-        //Jika variabel $data terdapat data di dalamnya 
-        if ($data) {
-            $this->response(
-                [
-                    'data' => $data,
-                    'status' => 'success',
-                    'response_code' => RestController::HTTP_OK
-                ],
-                RestController::HTTP_OK
-            );
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['username']) && isset($_POST['password'])) {
+
+                $user_login = $this->Users_model->queryLogin($_POST['username'], $_POST['password']);
+                $result['user_id']   = null;
+
+                if ($user_login->num_rows() == true) {
+                    $result['value'] = "1";
+                    $result['pesan'] = "sukses login!";
+                    $result['user_id']   = $user_login->row()->user_id;
+                } else {
+                    $result['value'] = "2";
+                    $result['pesan'] = "username atau password salah!";
+                }
+            } else {
+                $result['value'] = "3";
+                $result['pesan'] = "beberapa inputan masih kosong!";
+            }
         } else {
-            $this->response(
-                [
-                    'status' => 'false',
-                    'response_code' => RestController::HTTP_NOT_FOUND
-                ],
-                RestController::HTTP_NOT_FOUND
-            );
+            $result['value'] = "4";
+            $result['pesan'] = "invalid request method!";
         }
+
+        echo json_encode($result);
     }
-
-    //tambah data user
-
-    public function user_post()
+    //Register
+    public function register_post()
     {
-        $data = array(
-            'user_id' => $this->post('user_id'),
-            'username' => $this->post('username'),
-            'password' => $this->post('password'),
-            'email' => $this->post('email')
-        );
-        $cek_data = "";
-        if ($data['user_id'] != NULL) {
-            $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
-        }
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
 
-        //Validasi Jika semua data wajib diisi
-        if (
-            $data['username'] == NULL ||
-            $data['password'] == NULL ||
-            $data['email'] == NULL
-        ) {
-            $this->response(
-                [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Data Yang Dikirim Tidak Boleh Ada Yang Kosong',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-            //Validasi Jika data duplikat
-        } else if ($cek_data) {
-            $this->response(
-                [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Data Duplikat',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-
-            //Jika data tersimpan
-        } elseif ($this->Users_model->insertUsers($data) > 0) {
-            $this->response(
-                [
-                    'status' => true,
-                    'response_code' => RestController::HTTP_CREATED,
-                    'message' => 'Data Berhasil Ditambahkan',
-                ],
-                RestController::HTTP_CREATED
-            );
+                // validasi jika username sudah ada
+                if ($this->Users_model->cekUsername($_POST['username'])->num_rows() == 1) {
+                    $result['value'] = "1";
+                    $result['pesan'] = "username sudah terdaftar!";
+                }
+                // validasi jika email sudah ada
+                else if ($this->Users_model->cekEmail($_POST['email'])->num_rows() == 1) {
+                    $result['value'] = "2";
+                    $result['pesan'] = "email sudah ter registrasi!";
+                } else {
+                    $this->Users_model->addUser();
+                    $result['value'] = "3";
+                    $result['pesan'] = "registrasi berhasil!";
+                }
+            }
+            // validasi jika ada data yang kosong
+            else {
+                $result['value'] = "4";
+                $result['pesan'] = "beberapa inputan masih kosong!";
+            }
         } else {
-            $this->response(
-                [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Gagal Menambahkan Data',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
+            $result['value'] = "5";
+            $result['pesan'] = "invalid request method!";
         }
-    }
 
-    //edit data user
-    public function user_put()
-    {
-        $user_id = $this->put('user_id');
-        $data = array(
-            'username' => $this->put('username'),
-            'password' => $this->put('password'),
-            'email' => $this->put('email')
-        );
-        //Jika field user_id tidak diisi
-        if (
-            $user_id == NULL ||
-            $data['username'] == NULL ||
-            $data['password'] == NULL ||
-            $data['email'] == NULL
-        ) {
-            $this->response(
-                [
-                    'status' => $user_id,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Ups! Mohon isi semua data',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-            //Jika data berhasil berubah
-        } elseif ($this->Users_model->updateUsers($data, $user_id) > 0) {
-            $this->response(
-                [
-                    'status' => true,
-                    'response_code' => RestController::HTTP_CREATED,
-                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Berhasil Diubah',
-                ],
-                RestController::HTTP_CREATED
-            );
-        } else {
-            $this->response(
-                [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Gagal Mengubah Data',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-        }
-    }
-
-    public function user_delete()
-    {
-        $user_id = $this->delete('user_id');
-
-        //Jika field user_id tidak diisi
-        if ($user_id == NULL) {
-            $this->response(
-                [
-                    'status' => $user_id,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'user_id Tidak Boleh Kosong',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-            //Kondisi ketika OK
-        } elseif ($this->Users_model->deleteUsers($user_id) > 0) {
-            $this->response(
-                [
-                    'status' => true,
-                    'response_code' => RestController::HTTP_OK,
-                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Berhasil Dihapus',
-                ],
-                RestController::HTTP_OK
-            );
-            //Kondisi gagal
-        } else {
-            $this->response(
-                [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Data Users Dengan user_id ' . $user_id . ' Tidak Ditemukan',
-                ],
-                RestController::HTTP_BAD_REQUEST
-            );
-        }
+        echo json_encode($result);
     }
 }

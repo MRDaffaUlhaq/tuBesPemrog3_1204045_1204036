@@ -1,10 +1,10 @@
 <div class="container">
-    <h3><?= $title ?></h3>
+    <h3 class="text-white"><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent ml-n3">
-            <li class="breadcrumb-item"><a>Pelayanan</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('service'); ?>">List Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Detail Data</li>
+            <li class="breadcrumb-item"><a class=" text-white">Pelayanan</a></li>
+            <li class="breadcrumb-item "><a class=" text-white" href="<?= base_url('service'); ?>">List Data</a></li>
+            <li class="breadcrumb-item text-white active" aria-current="page">Detail Data</li>
         </ol>
     </nav>
     <div class="row mt-3">
@@ -19,7 +19,7 @@
                     <h5 class="card-title"><b>Service ID :</b><br><?= $data_service['service_id'] ?></h5>
                     <p class="card-text"><b>Service Name :</b><br><?= $data_service['service_name'] ?></p>
                     <p class="card-text"><b>Description :</b><br><?= $data_service['desc'] ?></p>
-                    <p class="card-text"><b>Price :</b><br><?= $data_service['price'] ?></p>
+                    <p class="card-text"><b>Price :</b><br>Rp. <?= number_format($data_service['price']) ?></p>
                     <p></p>
                     <a href="<?= base_url(); ?>service" class="btn btn-secondary">Kembali</a>
                 </div>

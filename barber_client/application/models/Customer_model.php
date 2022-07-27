@@ -78,7 +78,7 @@ class Customer_model extends CI_Model
     {
         $response = $this->_guzzle->request('DELETE', '', [
             'form_params' => [
-                'http_errors => false',
+                'http_errors' => false,
                 'KEY' => 'ulbi123',
                 'customer_id' => $customer_id
             ]

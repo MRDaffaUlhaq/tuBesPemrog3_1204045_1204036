@@ -1,10 +1,10 @@
 <div class="container pt-3">
-    <h3><?= $title ?></h3>
+    <h3 class="text-white"><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-transparent ml-n3">
-            <li class="breadcrumb-item"><a>Pelayanan</a></li>
-            <li class="breadcrumb-item "><a href="<?= base_url('service'); ?>">List Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Data</li>
+            <li class="breadcrumb-item"><a class="text-white">Pelayanan</a></li>
+            <li class="breadcrumb-item "><a class="text-white" class="opacity-5 text-white" href="<?= base_url('service'); ?>">List Data</a></li>
+            <li class="breadcrumb-item text-white active" aria-current="page">Edit Data</li>
         </ol>
     </nav>
     <div class="row">
@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <label for="price" class="col-sm-2 col-form-label">Harga</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="price" name="price" value="<?= $data_service['price']; ?>">
+                            <input type="number" class="form-control" id="price" name="price" value="<?= $data_service['price']; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('price') ?>
                             </small>
