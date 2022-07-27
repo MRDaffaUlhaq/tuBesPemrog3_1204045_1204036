@@ -1,22 +1,22 @@
 <!-- MENU -->
 
 <!-- BACKGROUND -->
-<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmFyYmVyc2hvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); background-position-y: 50%;">
+<div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://images.unsplash.com/photo-1519500528352-2d1460418d41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGJhcmJlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60">
     <span class="mask bg-gradient-dark opacity-6"></span>
 </div>
 <!-- END OF BACKGROUND -->
 
 <!-- SIDEBAR -->
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs opacity-9 border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="<?= base_url(); ?> https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
-            <img src="<?= base_url('assets/img/logo-ct-dark.png'); ?> " class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">King's Barbershop</span>
+        <a class="navbar-brand m-0" type="button" href="#" data-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="This is a very beautiful popover, show some love.">
+            <img src="<?= base_url('assets/img/logo.png'); ?> " class="navbar-brand-img" alt="main_logo">
+            <span class="ms-1 h6 font-weight-bold">King's Barbershop</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
 

@@ -1,16 +1,18 @@
 <div class="container-fluid pt-3">
     <div data-aos="fade-up-right">
-        <h3 class=" text-white"><?= $title ?></h3>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent ml-n3">
-                <li class="breadcrumb-item"><a class=" text-white">Transaksi</a></li>
-                <li class="breadcrumb-item"><a class=" text-white" href="<?= base_url('transaction'); ?>">List Data</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Add Data</li>
-            </ol>
-        </nav>
+        <div class="ml-5 pl-5">
+            <h3 class=" text-white"><?= $title ?></h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent ml-n3">
+                    <li class="breadcrumb-item"><a class=" text-white">Transaksi</a></li>
+                    <li class="breadcrumb-item"><a class=" text-white" href="<?= base_url('transaction'); ?>">List Data</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Add Data</li>
+                </ol>
+            </nav>
+        </div>
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <div class="card shadow mb-5 bg-white rounded">
+                <div class="card p-4 shadow mb-5 bg-white rounded">
                     <div class="card-body">
                         <?php
                         //create form
@@ -129,8 +131,8 @@
 
                         <div class="form-group row">
                             <div class="col-sm-10 offset-md-2">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a class="btn btn-secondary" href="javascript:history.back()">Kembali</a>
+                                <button type="submit" class="btn bg-gradient-primary">Simpan</button>
+                                <a class="btn bg-gradient-secondary" href="javascript:history.back()">Kembali</a>
                             </div>
                         </div>
                         </form>

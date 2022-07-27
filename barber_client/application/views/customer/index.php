@@ -1,5 +1,5 @@
 <div class="container">
-    <div data-aos="zoom-in-down">
+    <div data-aos="fade-up-right">
 
         <h3 class="text-white"><?= $title ?></h3>
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
@@ -24,16 +24,20 @@
                     <?php endif; ?>
                 </div>
                 <div class="card shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-title pl-3 pt-3">
+                        <a class="btn bg-gradient-primary mb-4" href="<?= base_url('customer/add/') ?>"><i class="fa fa-plus-square mr-1"></i>
+                            Tambah Data
+                        </a>
+                    </div>
                     <div class="card-body">
-                        <a class="btn btn-dark mb-2" href="<?= base_url('customer/add/') ?>"><i class="fa fa-plus-square mr-1"></i> Tambah Data</a>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover text-sm" id="tableService">
+                            <table class="table table-hover align-items-center mb-2" id="tableService">
                                 <thead>
-                                    <tr class="bg-dark text-white text-center">
-                                        <th>NOMOR</th>
-                                        <th>NAMA PELANGGAN</th>
-                                        <th>TELEPON</th>
-                                        <th>AKSI</th>
+                                    <tr>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7">NOMOR</th>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7 ps-2">PELANGGAN</th>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7">TELEPON</th>
+                                        <th class="text-primary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,18 +46,20 @@
                                     foreach ($data_customer as $row) :
                                     ?>
                                         <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $row['name'] ?></td>
-                                            <td class="text-justify"><?= $row['telp'] ?></td>
+                                            <td class="text-center"><?= $no++; ?></td>
+                                            <td class="text-center"><?= $row['name'] ?></td>
+                                            <td class="text-center"><?= $row['telp'] ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
-                                                <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn btn-danger btn-sm item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn bg-gradient-info btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Detail" data-container="body" data-animation="true"><i class="fa fa-eye "></i></a>
+                                                <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn bg-gradient-warning btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah Data" data-container="body" data-animation="true"><i class="fa fa-edit "></i></a>
+                                                <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn bg-gradient-danger item-delete btn-tooltip tombol-hapus" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" data-container="body" data-animation="true"><i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
+
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>
