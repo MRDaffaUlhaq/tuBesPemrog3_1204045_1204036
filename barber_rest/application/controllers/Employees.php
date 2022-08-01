@@ -194,4 +194,13 @@ class Employees extends RestController
             );
         }
     }
+    public function countEmp_get()
+    {
+        $this->response(
+            [
+                $this->Employees_model->getEmp()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

@@ -45,4 +45,11 @@ class Criticisms_n_suggests_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+
+
+    public function getCns()
+    {
+        $query = $this->db->query("SELECT count(*) as cns FROM criticisms_n_suggests");
+        return $query->row_array();
+    }
 }

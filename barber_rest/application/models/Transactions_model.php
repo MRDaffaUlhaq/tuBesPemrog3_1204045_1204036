@@ -47,4 +47,10 @@ class Transactions_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+
+    public function getTransactions()
+    {
+        $query = $this->db->query("SELECT count(*) as transactions FROM transactions");
+        return $query->row_array();
+    }
 }

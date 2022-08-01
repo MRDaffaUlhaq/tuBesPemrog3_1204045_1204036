@@ -18,7 +18,7 @@
                     <?php if ($this->session->flashdata('message')) : ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             Error! <?= $this->session->flashdata('message'); ?>
-                            <button type="button" class="close" data-dismiss="alert" arialabel="Close">
+                            <button type="reset" class="close" data-dismiss="alert" arialabel="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

@@ -50,9 +50,9 @@
                                             <td class="text-center"><?= $row['name'] ?></td>
                                             <td class="text-center"><?= $row['telp'] ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn bg-gradient-info btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Detail" data-container="body" data-animation="true"><i class="fa fa-eye "></i></a>
-                                                <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn bg-gradient-warning btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah Data" data-container="body" data-animation="true"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn bg-gradient-danger item-delete btn-tooltip tombol-hapus" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" data-container="body" data-animation="true"><i class="fa fa-trash "></i></a>
+                                                <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-eye "></i></a>
+                                                <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
+                                                <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash "></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

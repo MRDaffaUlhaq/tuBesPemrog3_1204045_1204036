@@ -9,6 +9,11 @@ class Service extends CI_Controller
 
         $this->load->model('Service_model'); //load model Service
         $this->load->library('form_validation'); //load form validation
+        // session_start();
+        // if (!isset($_SESSION['username'])) {
+        //     $this->session->set_flashdata('message', 'Anda belum login');
+        //     redirect('login');
+        // }
     }
 
     //load all data to index view

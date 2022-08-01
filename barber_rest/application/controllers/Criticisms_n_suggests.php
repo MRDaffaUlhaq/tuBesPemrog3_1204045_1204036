@@ -192,4 +192,14 @@ class Criticisms_n_suggests extends RestController
             );
         }
     }
+
+    public function countCns_get()
+    {
+        $this->response(
+            [
+                $this->Criticisms_n_suggests_model->getCns()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

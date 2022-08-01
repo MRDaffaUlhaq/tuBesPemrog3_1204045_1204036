@@ -29,9 +29,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-2 ">
-                                <label for="name" class="col-form-label">Edit Nama</label>
-                            </div>
+                            <label for="name" class="col-sm-2 col-form-label">Edit Nama</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="name" name="name" value=" <?= $data_customer['name']; ?>">
                                 <small class="text-danger">

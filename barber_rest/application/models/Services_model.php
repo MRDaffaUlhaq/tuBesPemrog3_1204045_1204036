@@ -47,4 +47,9 @@ class Services_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+    public function getServices()
+    {
+        $query = $this->db->query("SELECT count(*) as services FROM services");
+        return $query->row_array();
+    }
 }

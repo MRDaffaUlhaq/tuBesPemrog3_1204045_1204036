@@ -6,6 +6,11 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // session_start();
+        // if (!isset($_SESSION['username'])) {
+        //     $this->session->set_flashdata('message', 'Anda belum login');
+        //     redirect('login');
+        // }
     }
 
     //load all data to index view

@@ -34,7 +34,7 @@
                                 <label for="name" class="col-form-label">Nama</label>
                             </div>
                             <div class="col-sm-10">
-                                <input type="text" placeholder="Masukkan nomor telepon pelanggan ..." class="form-control" id="name" name="name" value="<?= set_value('name'); ?>">
+                                <input type="text" placeholder="Masukkan nama pelanggan ..." class="form-control" id="name" name="name" value="<?= set_value('name'); ?>">
                                 <small class="text-danger">
                                     <?php echo form_error('name') ?>
                                 </small>
@@ -46,7 +46,7 @@
                                 <label for="telp" class="col-form-label">Telepon</label>
                             </div>
                             <div class="col-sm-10">
-                                <input type="text" placeholder="Masukkan nomor telepon pelanggan ..." class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
+                                <input type="number" placeholder="Masukkan nomor telepon pelanggan ..." class="form-control" id="telp" name="telp" value="<?= set_value('telp'); ?>">
                                 <small class="text-danger">
                                     <?php echo form_error('telp') ?>
                                 </small>

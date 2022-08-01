@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +7,10 @@
     <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url(); ?>assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/favicon.png">
     <title>
-        Argon Dashboard 2 by Creative Tim
+        Sign In
     </title>
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
@@ -35,11 +23,10 @@
     <link id="pagestyle" href="<?= base_url(); ?>assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 </head>
 
-<body class="">
-    <div class="container position-sticky z-index-sticky top-0">
+<body style="background-color: #ffff;">
+    <!-- <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
-            <div class="col-12">
-                <!-- Navbar -->
+            <div class="col-12">          
                 <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid">
                         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
@@ -87,58 +74,60 @@
                         </div>
                     </div>
                 </nav>
-                <!-- End Navbar -->
+               
             </div>
         </div>
-    </div>
+    </div> -->
     <main class="main-content  mt-0">
         <section>
             <div class="page-header min-vh-100">
                 <div class="container">
+                    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
-                            <div class="card card-plain">
-                                <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Sign In</h4>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
-                                </div>
-                                <div class="card-body">
+                        <div data-aos="fade-left" ata-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">
+                            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                                <?php if ($this->session->flashdata('message')) : ?>
+                                    <div class="alert alert-danger alert-dismissible text-white fade-show" role="alert">
+                                        <?= $this->session->flashdata('message'); ?>
+                                    </div>
+                                <?php endif; ?>
 
-
-                                    <?php
-                                    //create form
-                                    $attributes = array('method' => "post", "autocomplete" => "off");
-                                    echo form_open('', $attributes);
-                                    ?>
-                                    <div class="mb-3">
-                                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
+                                <div class="card shadow-lg p-3 bg-white rounded">
+                                    <div class="card-header pb-0 text-start">
+                                        <h4 class="font-weight-bolder">Sign In</h4>
+                                        <p class="mb-0">Silahkan masukkan username dan password</p>
                                     </div>
-                                    <div class="mb-3">
-                                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                    <div class="card-body">
+                                        <?php
+                                        //create form
+                                        $attributes = array('method' => "post", "autocomplete" => "off");
+                                        echo form_open('', $attributes);
+                                        ?>
+                                        <div class="mb-3">
+                                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0">Sign in</button>
+                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                                        <p class="mb-4 text-sm mx-auto">
+                                            Belum punya akun?
+                                            <a href="<?= base_url('register') ?>" class="text-dark font-weight-bolder">Sign up</a>
+                                        </p>
                                     </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
-                                    </div>
-                                    </form>
-                                </div>
-                                <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                    <p class="mb-4 text-sm mx-auto">
-                                        Don't have an account?
-                                        <a href="javascript:;" class="text-primary text-gradient font-weight-bold">Sign up</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-                            <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg');
-          background-size: cover;">
-                                <span class="mask bg-gradient-primary opacity-6"></span>
-                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"</h4>
-                                <p class="text-white position-relative">The more effortless the writing looks, the more effort the writer actually put into the process.</p>
+                            <div class="position-relative bg-gradient-secondary h-100 px-7 d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1598524374912-6b0b0bab43dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmFyYmVyc2hvcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'); background-size: cover;">
+                                <span class="mask bg-gradient-secondary opacity-6"></span>
+                                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Selamat Datang"</h4>
+                                <p class="text-white position-relative">Ke mana fokus anda pergi, maka kesana lah energi anda akan mengalir.</p>
                             </div>
                         </div>
                     </div>
@@ -147,10 +136,10 @@
         </section>
     </main>
     <!--   Core JS Files   -->
-    <script src="<?= base_url(); ?>assets/js/core/popper.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/core/bootstrap.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="<?= base_url(); ?>assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/sweetalert2.all.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -171,83 +160,3 @@
 </body>
 
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title><?= $title ?></title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/style-auth.css">
-
-</head>
-
-<body>
-    <?php if ($this->session->flashdata('message')) : ?>
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            Error! <?= $this->session->flashdata('message'); ?>
-            <button type="button" class="close" data-dismiss="alert" arialabel="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php endif; ?>
-    <div id="back">
-        <div class="backRight"></div>
-        <div class="backLeft"></div>
-    </div>
-
-    <div id="slideBox">
-        <div class="topLayer">
-            <div class="left">
-                <div class="content">
-                    <h2 class="title-sign-up">Sign Up</h2>
-                    <form method="post" onsubmit="return false;">
-                        <div class="form-group">
-                            <input type="text" placeholder="Username" />
-                            <input type="password" placeholder="Password" />
-                            <input type="email" placeholder="email" />
-                        </div>
-                        <div class="form-group"></div>
-                        <div class="form-group"></div>
-                        <div class="form-group"></div>
-                    </form>
-                    <button id="goLeft" class="off-login">Login</button>
-                    <button class="btn-sign-up">Sign up</button>
-
-
-                </div>
-            </div>
-            <div class="right">
-                <div class="content">
-                    <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
-                        <h2 class="title-login">Login</h2>
-                        <?php
-                        //create form
-                        $attributes = array('method' => "post", "autocomplete" => "off");
-                        echo form_open('', $attributes);
-                        ?>
-                        <div class="form-group">
-                            <input name="username" type="text" placeholder="Username" required />
-                            <input name="password" type="password" placeholder="Password" required />
-                        </div>
-                        <button id="goRight" class="off-sign-up">Sign Up</button>
-
-                        <button type="submit" class="btn-login text-decoration-none" id="login" type="submit">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="<?= base_url(); ?>assets/js/script-auth.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-</body>
-
-</html> -->

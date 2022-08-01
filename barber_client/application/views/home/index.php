@@ -1,80 +1,85 @@
 <div data-aos="fade-up-right">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent ml-n3 mt-n4">
+            <li class="breadcrumb-item h3 text-white">Dashboard</li>
+        </ol>
+    </nav>
     <!-- CARD BARIS SATU -->
     <div class="row">
 
         <!-- CARD TRANSAKSI -->
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Transaksi</p>
-                                <h5 class="font-weight-bolder">
-                                    $53,000
-                                </h5>
-                                <!-- <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                      since yesterday
-                    </p> -->
+            <a href="<?= base_url('transaction/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Transaksi</p>
+                                    <!-- <p class="mb-0">
+                          <span class="text-success text-sm font-weight-bolder">+55%</span>
+                          since yesterday
+                        </p> -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD TRANSAKSI -->
 
         <!-- CARD PELANGGAN -->
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelanggan</p>
-                                <h5 class="font-weight-bolder">
-                                    2,300
-                                </h5>
+            <a href="<?= base_url('customer/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelanggan</p>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                <i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                    <i class="ni ni-circle-08 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD PELANGGAN -->
 
         <!-- CARD PELAYANAN -->
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelayanan</p>
-                                <h5 class="font-weight-bolder">
-                                    +3,462
-                                </h5>
+            <a href="<?= base_url('service/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pelayanan</p>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                <i class="ni ni-satisfied text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                                    <i class="ni ni-satisfied text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD PELAYANAN -->
 
@@ -86,73 +91,71 @@
 
         <!-- CARD PEGAWAI -->
         <div class="col-xl-4 col-sm-6">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Pegawai</p>
-                                <h5 class="font-weight-bolder">
-                                    $103,430
-                                </h5>
+            <a href="<?= base_url('employees/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pegawai</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                                    <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD PEGAWAI -->
 
         <!-- CARD JABATAN -->
         <div class="col-xl-4 col-sm-6">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">JABATAN</p>
-                                <h5 class="font-weight-bolder">
-                                    $103,430
-                                </h5>
+            <a href="<?= base_url('job/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">JABATAN</p>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
-                                <i class="ni ni-tag text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-info shadow-info text-center rounded-circle">
+                                    <i class="ni ni-tag text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD JABATAN -->
 
         <!-- CARD CNS -->
         <div class="col-xl-4 col-sm-6">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Kritik Dan Saran</p>
-                                <h5 class="font-weight-bolder">
-                                    $103,430
-                                </h5>
+            <a href="<?= base_url('Cns/index/') ?>" class="text-black text-decoration-none">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-8 p-3">
+                                <div class="numbers">
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Kritik Dan Saran</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                <i class="ni ni-single-copy-04 text-lg opacity-10" aria-hidden="true"></i>
+                            <div class="col-4 text-end">
+                                <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                                    <i class="ni ni-single-copy-04 text-lg opacity-10" aria-hidden="true"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         <!-- CARD CNS -->
     </div>
@@ -222,4 +225,5 @@
             </div>
         </div>
     </div>
+
 </div>

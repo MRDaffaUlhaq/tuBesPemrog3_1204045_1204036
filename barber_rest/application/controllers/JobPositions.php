@@ -188,4 +188,14 @@ class JobPositions extends RestController
             );
         }
     }
+
+    public function countJob_get()
+    {
+        $this->response(
+            [
+                $this->JobPositions_model->getJob()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

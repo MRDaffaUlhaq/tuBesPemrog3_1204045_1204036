@@ -8,18 +8,20 @@ require APPPATH . 'libraries/RestController.php';
 
 use chriskacerguis\RestServer\RestController;
 
-class Users extends RestController
+class Keys extends RestController
 {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Keys_model');
         $this->load->model('Users_model');
     }
+    //fungsi CRUD 
 
-    public function register_get()
+    public function key_get()
     {
-        $user_id = $this->get('user_id');
-        $data = $this->Users_model->getDatausers($user_id);
+        $id = $this->get('id');
+        $data = $this->Keys_model->getDataKeys($id);
         //Jika variabel $data terdapat data di dalamnya 
         if ($data) {
             $this->response(
@@ -40,32 +42,35 @@ class Users extends RestController
             );
         }
     }
-    //Register
-    public function register_post()
+
+    //tambah data key
+
+    public function key_post()
     {
+        $now = date('Y-m-d H:i:s');
         $data = array(
-            'user_id' => $this->post('user_id'),
+            'id' => $this->post('id'),
             'username' => $this->post('username'),
             'password' => $this->post('password'),
-            'email' => $this->post('email'),
-            "emp_id" => $this->post('emp_id'),
+            'key' => $this->post('key'),
+            'level' => 1,
+            'ignore_limits' => 0,
+            'is_private_key' => 0,
+            'ip_addresses' => $this->post(''),
+            'date_created' => $now,
         );
         $cek_data = "";
-        if ($data['user_id'] != NULL) {
-            $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
+        if ($data['id'] != NULL) {
+            $cek_data = $this->Keys_model->getDataKeys($this->post('id'));
         } elseif ($data['email'] != NULL) {
             $cek_data = $this->Users_model->cekEmail($this->post('email'));
         } elseif ($data['username'] != NULL) {
             $cek_data = $this->Users_model->cekUsername($this->post('username'));
         }
 
-
         //Validasi Jika semua data wajib diisi
         if (
-            $data['username'] == NULL ||
-            $data['email'] == NULL ||
-            $data['emp_id'] == NULL ||
-            $data['password'] == NULL
+            $data['key'] == NULL
         ) {
             $this->response(
                 [
@@ -87,7 +92,7 @@ class Users extends RestController
             );
 
             //Jika data tersimpan
-        } elseif ($this->Users_model->insertUser($data) > 0) {
+        } elseif ($this->Keys_model->insertkeys($data) > 0) {
             $this->response(
                 [
                     'status' => true,
@@ -106,43 +111,5 @@ class Users extends RestController
                 RestController::HTTP_BAD_REQUEST
             );
         }
-    }
-
-    public function login_post()
-    {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['username']) && isset($_POST['password'])) {
-
-                $user_login = $this->Users_model->queryLogin($_POST['username'], $_POST['password']);
-                $result['user_id']   = null;
-
-                if ($user_login->num_rows() == true) {
-                    $result['value']    = "1";
-                    $result['pesan']    = "sukses login!";
-                    $result['user_id']  = $user_login->row()->user_id;
-                } else {
-                    $result['value'] = "2";
-                    $result['pesan'] = "username atau password salah!";
-                }
-            } else {
-                $result['value'] = "3";
-                $result['pesan'] = "beberapa inputan masih kosong!";
-            }
-        } else {
-            $result['value'] = "4";
-            $result['pesan'] = "invalid request method!";
-        }
-
-        echo json_encode($result);
-    }
-
-    public function countUsers_get()
-    {
-        $this->response(
-            [
-                $this->Users_model->getUsers()
-            ],
-            RestController::HTTP_OK
-        );
     }
 }

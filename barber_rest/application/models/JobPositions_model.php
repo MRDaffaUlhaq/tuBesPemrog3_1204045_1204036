@@ -47,4 +47,10 @@ class JobPositions_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+
+    public function getJob()
+    {
+        $query = $this->db->query("SELECT count(*) as job FROM job_positions");
+        return $query->row_array();
+    }
 }

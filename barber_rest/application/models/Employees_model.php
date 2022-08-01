@@ -45,4 +45,10 @@ class Employees_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+
+    public function getEmp()
+    {
+        $query = $this->db->query("SELECT count(*) as emp FROM employees");
+        return $query->row_array();
+    }
 }

@@ -198,4 +198,14 @@ class Transactions extends RestController
             );
         }
     }
+
+    public function countTr_get()
+    {
+        $this->response(
+            [
+                $this->Transactions_model->getTransactions()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

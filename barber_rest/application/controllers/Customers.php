@@ -187,4 +187,14 @@ class Customers extends RestController
             );
         }
     }
+
+    public function countCust_get()
+    {
+        $this->response(
+            [
+                $this->Customers_model->getCust()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

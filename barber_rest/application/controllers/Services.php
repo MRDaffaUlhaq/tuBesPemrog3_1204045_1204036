@@ -189,4 +189,14 @@ class Services extends RestController
             );
         }
     }
+
+    public function countSv_get()
+    {
+        $this->response(
+            [
+                $this->Services_model->getServices()
+            ],
+            RestController::HTTP_OK
+        );
+    }
 }

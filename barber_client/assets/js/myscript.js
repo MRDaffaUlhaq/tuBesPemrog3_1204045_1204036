@@ -2,8 +2,8 @@ const flashData = $(".flash-data").data("flashdata");
 
 if (flashData) {
 	Swal({
-		title: "Data ",
-		text: "Berhasil " + flashData,
+		title: "Berhasil ",
+		text: flashData,
 		type: "success",
 	});
 }

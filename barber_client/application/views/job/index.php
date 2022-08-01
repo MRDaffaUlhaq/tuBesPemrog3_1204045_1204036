@@ -1,6 +1,5 @@
 <div class="container">
-    <div data-aos="zoom-in-down">
-
+    <div data-aos="fade-up-right">
         <h3 class="text-white"><?= $title ?></h3>
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
         <nav aria-label="breadcrumb">
@@ -11,7 +10,6 @@
         </nav>
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-dark mb-2" href="<?= base_url('job/add/') ?>"><i class="fa fa-plus-square mr-1"></i> Tambah Data</a>
                 <div mb-2>
                     <!-- Menampilkan flash data (pesan saat data error)-->
                     <?php if ($this->session->flashdata('message')) : ?>
@@ -26,13 +24,18 @@
                 <div class="card shadow p-3 mb-5 bg-white rounded">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover text-sm" id="tableService">
+                            <div class="card-title">
+                                <a class="btn bg-gradient-primary mb-4" href="<?= base_url('job/add/') ?>"><i class="fa fa-plus-square mr-1"></i>
+                                    Tambah Data
+                                </a>
+                            </div>
+                            <table class="table table-hover align-items-center mb-2" id="tableService">
                                 <thead>
-                                    <tr class="bg-dark text-white text-center">
-                                        <th>NOMOR</th>
-                                        <th>JABATAN</th>
-                                        <th>GAJI</th>
-                                        <th>DESKRIPSI</th>
+                                    <tr>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7">NOMOR</th>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7 ps-2">JABATAN</th>
+                                        <th class="text-center text-uppercase text-primary  font-weight-bolder opacity-7">GAJI</th>
+                                        <th class="text-primary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,18 +44,19 @@
                                     foreach ($data_job as $row) :
                                     ?>
                                         <tr>
-                                            <td><?= $no++; ?></td>
+                                            <td class="text-center"><?= $no++; ?></td>
                                             <td><?= $row['position'] ?></td>
-                                            <td class="text-justify"><?= $row['salary'] ?></td>
+                                            <td class="text-center">Rp. <?= number_format($row['salary']) ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('job/detail/' . $row['position_id']) ?>" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
-                                                <a href="<?= base_url('job/edit/' . $row['position_id']) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('job/delete/' . $row['position_id']) ?>" class="btn btn-danger btn-sm item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('job/detail/' . $row['position_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
+                                                <a href="<?= base_url('job/edit/' . $row['position_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
+                                                <a href="<?= base_url('job/delete/' . $row['position_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

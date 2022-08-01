@@ -47,4 +47,10 @@ class Customers_model extends CI_Model
         return $this->db->affected_rows();
         // return $query;
     }
+
+    public function getCust()
+    {
+        $query = $this->db->query("SELECT count(*) as customers FROM customers");
+        return $query->row_array();
+    }
 }
