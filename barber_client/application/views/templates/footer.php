@@ -1,5 +1,5 @@
   <!-- footer -->
-  <footer class="footer pt-3 sticky-bottom">
+  <footer class="footer pt-3 fixed">
       <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-center">
               <div class="col-lg-12 mb-lg-0 mb-4">

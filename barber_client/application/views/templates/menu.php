@@ -144,7 +144,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                        <a href="<?= base_url('register/logout') ?>" class="btn bg-gradient-primary">Logout</a>
+                                        <a href="<?= base_url('login/logout') ?>" class="btn bg-gradient-primary">Logout</a>
                                     </div>
                                 </div>
                             </div>

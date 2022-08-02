@@ -20,12 +20,12 @@
                     <div class="card-body">
                         <div class="row p-2">
                             <div class="col-md-6">
-                                <p class="card-title"><b>Service ID :</b><br><?= $data_service['service_id'] ?></p>
-                                <p class="card-text"><b>Service Name :</b><br><?= $data_service['service_name'] ?></p>
+                                <p class="card-title"><b>ID :</b><br><?= $data_service['service_id'] ?></p>
+                                <p class="card-text"><b>Layanan :</b><br><?= $data_service['service_name'] ?></p>
                             </div>
                             <div class="col-md-6">
-                                <p class="card-text"><b>Description :</b><br><?= $data_service['desc'] ?></p>
-                                <p class="card-text"><b>Price :</b><br>Rp. <?= number_format($data_service['price']) ?></p>
+                                <p class="card-text"><b>Deskripsi :</b><br><?= $data_service['desc'] ?></p>
+                                <p class="card-text"><b>Harga :</b><br>Rp. <?= number_format($data_service['price']) ?></p>
                             </div>
                         </div>
                         <div class="row pl-4 pr-4 p-3">

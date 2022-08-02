@@ -48,7 +48,7 @@
                                             <td><?= $row['name'] ?></td>
                                             <td class="text-center"><?= $row['rate'] ?></td>
                                             <td class="text-center">
-                                                <a href="<?= base_url('Cns/detail/' . $row['cns_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
+                                                <a href="<?= base_url('Cns/detail/' . $row['cns_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-eye"></i></a>
                                                 <a href="<?= base_url('Cns/edit/' . $row['cns_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
                                                 <a href="<?= base_url('Cns/delete/' . $row['cns_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
                                             </td>

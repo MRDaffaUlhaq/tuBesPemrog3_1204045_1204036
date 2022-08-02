@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-md-6">
                                 <p class="card-text"><b>Deskripsi : </b><br><?= $data_job['desc'] ?></p>
-                                <p class="card-text"><b>Price : </b><br>Rp. <?= number_format($data_job['salary']) ?></p>
+                                <p class="card-text"><b>Gaji : </b><br>Rp. <?= number_format($data_job['salary']) ?></p>
                             </div>
                         </div>
                         <div class="row pl-4 pr-4 p-3">

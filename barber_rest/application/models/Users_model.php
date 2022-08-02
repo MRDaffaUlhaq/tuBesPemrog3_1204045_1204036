@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Users_model extends CI_Model
 {
+
     private $_table_users = 'users';
     // register
     // get data dari tabel Users
@@ -69,5 +70,16 @@ class Users_model extends CI_Model
     {
         $query = $this->db->query("SELECT count(*) as user FROM users");
         return $query->row_array();
+    }
+
+    public function login($username, $password)
+    {
+        $this->db->from($this->_table_users);
+
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $this->db->join('keys', 'keys.user_id = users.user_id');
+        $query = $this->db->get()->row_array();
+        return $query;
     }
 }

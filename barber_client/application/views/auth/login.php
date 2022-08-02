@@ -98,20 +98,16 @@
                                         <p class="mb-0">Silahkan masukkan username dan password</p>
                                     </div>
                                     <div class="card-body">
-                                        <?php
-                                        //create form
-                                        $attributes = array('method' => "post", "autocomplete" => "off");
-                                        echo form_open('', $attributes);
-                                        ?>
-                                        <div class="mb-3">
-                                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0">Sign in</button>
-                                        </div>
+                                        <form action="<?= base_url('login/login') ?>" method="post">
+                                            <div class="mb-3">
+                                                <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username">
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0">Sign in</button>
+                                            </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center pt-0 px-lg-2 px-1">

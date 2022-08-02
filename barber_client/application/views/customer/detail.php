@@ -21,11 +21,11 @@
                     <div class="row p-2">
                         <div class="col-md-6">
                             <p class="card-text p-2">ID : <strong><?= $data_customer['customer_id'] ?></strong></p>
-                            <p class="card-text p-2">Deskripsi : <strong><?= $data_customer['name'] ?></strong></p>
+                            <p class="card-text p-2">Nama : <strong><?= $data_customer['name'] ?></strong></p>
                         </div>
                         <div class="col-md-6">
-                            <p class="card-text p-2">Tanggal : <strong><?= $data_customer['telp'] ?></strong></p>
-                            <p class="card-text p-2">Waktu : <strong><?= $data_customer['email'] ?></strong></p>
+                            <p class="card-text p-2">Telepon : <strong><?= $data_customer['telp'] ?></strong></p>
+                            <p class="card-text p-2">Email : <strong><?= $data_customer['email'] ?></strong></p>
                         </div>
                     </div>
                     <div class="row pl-4 pr-4 p-3">

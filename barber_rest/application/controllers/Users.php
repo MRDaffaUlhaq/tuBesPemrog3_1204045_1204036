@@ -10,9 +10,9 @@ use chriskacerguis\RestServer\RestController;
 
 class Users extends RestController
 {
-    public function __construct()
+    public function __construct($config = 'restnokey')
     {
-        parent::__construct();
+        parent::__construct($config);
         $this->load->model('Users_model');
     }
 
@@ -110,30 +110,52 @@ class Users extends RestController
 
     public function login_post()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['username']) && isset($_POST['password'])) {
+        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //     if (isset($_POST['username']) && isset($_POST['password'])) {
 
-                $user_login = $this->Users_model->queryLogin($_POST['username'], $_POST['password']);
-                $result['user_id']   = null;
+        //         $user_login = $this->Users_model->queryLogin($_POST['username'], $_POST['password']);
+        //         $result['user_id']   = null;
 
-                if ($user_login->num_rows() == true) {
-                    $result['value']    = "1";
-                    $result['pesan']    = "sukses login!";
-                    $result['user_id']  = $user_login->row()->user_id;
-                } else {
-                    $result['value'] = "2";
-                    $result['pesan'] = "username atau password salah!";
-                }
-            } else {
-                $result['value'] = "3";
-                $result['pesan'] = "beberapa inputan masih kosong!";
-            }
+        //         if ($user_login->num_rows() == true) {
+        //             $result['value']    = "1";
+        //             $result['pesan']    = "sukses login!";
+        //             $result['user_id']  = $user_login->row()->user_id;
+        //         } else {
+        //             $result['value'] = "2";
+        //             $result['pesan'] = "username atau password salah!";
+        //         }
+        //     } else {
+        //         $result['value'] = "3";
+        //         $result['pesan'] = "beberapa inputan masih kosong!";
+        //     }
+        // } else {
+        //     $result['value'] = "4";
+        //     $result['pesan'] = "invalid request method!";
+        // }
+
+        // echo json_encode($result);
+        $username = $this->post('username');
+        $password = $this->post('password');
+        $data = $this->Users_model->login($username, $password);
+        if ($data) {
+            $this->response(
+                [
+                    'data'  => $data,
+                    'result' => 'done',
+                    'response_code' => RestController::HTTP_OK
+                ],
+                RestController::HTTP_OK
+            );
         } else {
-            $result['value'] = "4";
-            $result['pesan'] = "invalid request method!";
+            $this->response(
+                [
+                    'data' => '',
+                    'result' => 'failed',
+                    'response_code' => RestController::HTTP_NOT_FOUND
+                ],
+                RestController::HTTP_NOT_FOUND
+            );
         }
-
-        echo json_encode($result);
     }
 
     public function countUsers_get()
