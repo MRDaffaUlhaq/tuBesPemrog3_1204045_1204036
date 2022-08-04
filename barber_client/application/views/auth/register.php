@@ -76,11 +76,11 @@
                             <!-- Message sukses -->
 
                             <div class="card-body">
-                                <?php
-                                //create form
-                                $attributes = array('method' => "post", "autocomplete" => "off");
-                                echo form_open('', $attributes);
-                                ?>
+                            <form action="<?= base_url('login/tryRegister') ?>" method="post">
+
+                                <div class="mb-3">
+                                    <input type="text" hidden name="user_id" class="form-control form-control-lg"  aria-label="user_id" >
+                                </div>
                                 <div class="mb-3">
                                     <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username" required>
                                 </div>
@@ -90,19 +90,7 @@
                                 <div class="mb-3">
                                     <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="email" required>
                                 </div>
-                                <div class="mb-3">
-                                    <select name="emp_id" class="form-select" id="emp_id" aria-label="Default select example" required>
-                                        <option>-- Akun untuk siapa ? --</option>
-                                        <?php
-                                        foreach ($data_emp as $row) :
-                                        ?>
-                                            <option value="<?= $row['emp_id']; ?>"><?= $row['emp_name'] ?> - <?= $row['position'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="text-danger">
-                                        <?php echo form_error('emp_id') ?>
-                                    </small>
-                                </div>
+                               
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-primary btn-lg btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                 </div>

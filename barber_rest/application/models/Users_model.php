@@ -59,6 +59,18 @@ class Users_model extends CI_Model
         // return $query;
     }
 
+    public function register($data)
+    {
+        $this->db->insert($this->_table_users, [
+            'user_id' => '',
+            'username' => $data['username'],
+            'password' => $data['password'],
+            'email' => $data['email'],
+        ]);
+        $query = $this->db->insert_id();
+        return $query;
+    }
+
 
     // login function
     public function queryLogin($username, $password)
@@ -82,4 +94,16 @@ class Users_model extends CI_Model
         $query = $this->db->get()->row_array();
         return $query;
     }
+
+    
+
+    public function simpanKey($data){
+        $this->db->insert('keys', [
+            'user_id' => $data['user_id'],
+            'key' => $data['key']
+        ]);
+
+        return $this->db->affected_rows();
+    }
+
 }

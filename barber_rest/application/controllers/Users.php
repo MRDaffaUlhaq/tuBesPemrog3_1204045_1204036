@@ -14,6 +14,7 @@ class Users extends RestController
     {
         parent::__construct($config);
         $this->load->model('Users_model');
+        $this->load->model('Keys_model');
     }
 
     public function register_get()
@@ -43,28 +44,27 @@ class Users extends RestController
     //Register
     public function register_post()
     {
-        $data = array(
+        $data = [
             'user_id' => $this->post('user_id'),
             'username' => $this->post('username'),
             'password' => $this->post('password'),
             'email' => $this->post('email'),
-            "emp_id" => $this->post('emp_id'),
-        );
+        ];
+
         $cek_data = "";
         if ($data['user_id'] != NULL) {
-            $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
-        } elseif ($data['email'] != NULL) {
-            $cek_data = $this->Users_model->cekEmail($this->post('email'));
-        } elseif ($data['username'] != NULL) {
-            $cek_data = $this->Users_model->cekUsername($this->post('username'));
-        }
+                $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
+            } elseif ($data['email'] != NULL) {
+                $cek_data = $this->Users_model->cekEmail($this->post('email'));
+            } elseif ($data['username'] != NULL) {
+                $cek_data = $this->Users_model->cekUsername($this->post('username'));
+            } 
 
+        // $register = $this->Users_model->register($data);
 
-        //Validasi Jika semua data wajib diisi
         if (
             $data['username'] == NULL ||
             $data['email'] == NULL ||
-            $data['emp_id'] == NULL ||
             $data['password'] == NULL
         ) {
             $this->response(
@@ -75,8 +75,7 @@ class Users extends RestController
                 ],
                 RestController::HTTP_BAD_REQUEST
             );
-            //Validasi Jika data duplikat
-        } else if ($cek_data) {
+        } elseif ($cek_data) {
             $this->response(
                 [
                     'status' => false,
@@ -85,27 +84,27 @@ class Users extends RestController
                 ],
                 RestController::HTTP_BAD_REQUEST
             );
-
-            //Jika data tersimpan
-        } elseif ($this->Users_model->insertUser($data) > 0) {
-            $this->response(
-                [
-                    'status' => true,
-                    'response_code' => RestController::HTTP_CREATED,
-                    'message' => 'Data Berhasil Ditambahkan',
-                ],
-                RestController::HTTP_CREATED
-            );
+        } elseif ($newUserId = $this->Users_model->register($data)) {
+                $this->response(
+                            [
+                                'data'  => $newUserId,
+                                'status' => 'Register Berhasil',
+                                'response_code' => RestController::HTTP_OK,
+                                'message' => 'Berhasil Register',
+                            ],
+                            RestController::HTTP_OK
+                        );
         } else {
             $this->response(
                 [
-                    'status' => false,
-                    'response_code' => RestController::HTTP_BAD_REQUEST,
-                    'message' => 'Gagal Menambahkan Data',
+                    'data' => '',
+                    'status' => 'Gagal Registrasi',
+                    'response_code' => RestController::HTTP_NOT_FOUND
                 ],
-                RestController::HTTP_BAD_REQUEST
+                RestController::HTTP_NOT_FOUND
             );
         }
+
     }
 
     public function login_post()
@@ -137,6 +136,7 @@ class Users extends RestController
         $username = $this->post('username');
         $password = $this->post('password');
         $data = $this->Users_model->login($username, $password);
+        $cek_id = $this->Keys_model->cekUserId($this->post('key'));
         if ($data) {
             $this->response(
                 [
@@ -146,11 +146,49 @@ class Users extends RestController
                 ],
                 RestController::HTTP_OK
             );
+        } elseif ($cek_id) {
+            $this->response(
+                [
+                    'data'  => '',
+                    'result' => 'failed user id',
+                    'response_code' => RestController::HTTP_NOT_FOUND
+                ],
+                RestController::HTTP_NOT_FOUND
+            );
         } else {
             $this->response(
                 [
                     'data' => '',
                     'result' => 'failed',
+                    'response_code' => RestController::HTTP_NOT_FOUND
+                ],
+                RestController::HTTP_NOT_FOUND
+            );
+        }
+    }
+
+    public function simpankey_post()
+    {
+        $data = [
+            'user_id' => $this->post('user_id'),
+            'key' => $this->post('key')
+        ];
+
+        $keySaved = $this->Users_model->simpanKey($data);
+        if ($keySaved > 0) {
+            $this->response(
+                [
+                    'data'  => true,
+                    'status' => 'API Key Tersimpan',
+                    'response_code' => RestController::HTTP_OK
+                ],
+                RestController::HTTP_OK
+            );
+        } else {
+            $this->response(
+                [
+                    'data' => '',
+                    'status' => 'API key Gagal disimpan',
                     'response_code' => RestController::HTTP_NOT_FOUND
                 ],
                 RestController::HTTP_NOT_FOUND

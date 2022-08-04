@@ -66,14 +66,26 @@
                             <?php endif; ?>
 
                             <div class="card-body">
-                                <form action="<?php echo base_url('GetKey/generate') ?>" method="POST">
-                                    <div class="mb-3">
-                                        <input type="text" name="key" class="form-control form-control-lg" placeholder="Klik tombol generate" aria-label="key" value="<?= empty($key) ? '' : $key ?>" required readonly>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0">Generate</button>
-                                    </div>
-                                </form>
+                            <form action="<?= base_url('login/generatekey') ?>" method="post">
+							<input
+								type="text"
+								name="key"
+								class="form-control text-center"
+								placeholder="API Key akan muncul di sini"
+								readonly="true"
+								value="<?php 
+								if($nKey != '')
+								 echo $nKey;
+								?>"
+							/>
+							<input type="hidden" name="user_id" value="<?php 
+								if($nId != '')
+								 echo $nId;
+								?>">
+							<input type="submit" class=" btn bg-gradient-dark btn-lg btn-lg w-100 mt-4 mb-0" value="Generate" <?php if($nKey != '') echo "disabled"?>></input>
+							</form>
+                            
+							<a class=" btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0" href="<?= base_url('login') ?>">Login</a>
                             </div>
                         </div>
                     </div>

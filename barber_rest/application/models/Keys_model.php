@@ -22,6 +22,21 @@ class Keys_model extends CI_Model
         }
     }
 
+    public function cekUserId($key)
+    {
+        //query builder
+        if ($key) {
+            $this->db->from($this->_table_keys);
+            $this->db->where('key', $key);
+            $query = $this->db->get()->row_array();
+            return $query;
+        } else {
+            $this->db->from($this->_table_keys);
+            $query = $this->db->get()->result_array();
+            return $query;
+        }
+    }
+
     public function insertKeys($data)
     {
         //Menggunakan Query Builder

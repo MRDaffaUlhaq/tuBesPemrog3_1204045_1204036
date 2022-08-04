@@ -31,7 +31,7 @@ class Register extends CI_Controller
                 "password" => $this->input->post('password'),
                 "email" => $this->input->post('email'),
                 "emp_id" => $this->input->post('emp_id'),
-                "KEY" => "ulbi123"
+                
             ];
             $insert = $this->Register_model->save($data);
             // var_dump($insert);
