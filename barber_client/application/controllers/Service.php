@@ -9,11 +9,7 @@ class Service extends CI_Controller
 
         $this->load->model('Service_model'); //load model Service
         $this->load->library('form_validation'); //load form validation
-        // session_start();
-        // if (!isset($_SESSION['username'])) {
-        //     $this->session->set_flashdata('message', 'Anda belum login');
-        //     redirect('login');
-        // }
+
     }
 
     //load all data to index view
@@ -23,12 +19,16 @@ class Service extends CI_Controller
         $data['title'] = "List Data Pelayanan";
 
         $data['data_service'] = $this->Service_model->getAll();
-
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('service/index', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('service/index', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     //load detail data to detail view
@@ -39,11 +39,16 @@ class Service extends CI_Controller
 
         $data['data_service'] = $this->Service_model->getById($service_id);
 
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('service/detail', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('service/detail', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     public function add()
@@ -58,11 +63,15 @@ class Service extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('service/add', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('service/add', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "service_id" => $this->input->post('service_id'),
@@ -99,11 +108,15 @@ class Service extends CI_Controller
         $this->form_validation->set_rules('price', 'Price', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('service/edit', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('service/edit', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "service_id" => $this->input->post('service_id'),

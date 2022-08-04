@@ -20,11 +20,16 @@ class Employees extends CI_Controller
 
         $data['data_employees'] = $this->Employees_model->getAll();
 
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('employees/index', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('employees/index', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! Kamu belum login');
+            redirect('login');
+        }
     }
 
     //load detail data to detail view
@@ -34,12 +39,16 @@ class Employees extends CI_Controller
         $data['title'] = "Detail Data Pegawai";
 
         $data['data_employees'] = $this->Employees_model->getById($emp_id);
-
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('employees/detail', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('employees/detail', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     public function add()
@@ -58,11 +67,15 @@ class Employees extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('employees/add', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('employees/add', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "emp_id" => $this->input->post('emp_id'),
@@ -104,11 +117,15 @@ class Employees extends CI_Controller
         $this->form_validation->set_rules('bank_acc', 'Bank Account', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('employees/edit', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('employees/edit', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "emp_id" => $this->input->post('emp_id'),

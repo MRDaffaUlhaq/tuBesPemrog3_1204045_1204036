@@ -19,10 +19,6 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-
-            // $this->load->view('templates/header', $data);
-            // $this->load->view('templates/menu', $data);
-            // $this->load->view('templates/footer', $data);
             $this->load->view('auth/login', $data);
         } else {
             $data = [

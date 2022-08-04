@@ -46,22 +46,26 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
-                                    foreach ($data_transaction as $row) :
+                                    if ($data_transaction != false) :
                                     ?>
-                                        <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td class="text-center"><?= $row['name'] ?></td>
-                                            <td class="text-center"><?= $row['service_name'] ?></td>
-                                            <td class="text-center"><?= $row['date'] ?></td>
-                                            <td class="text-center">Rp. <?= number_format($row['total']) ?></td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url('Transaction/detail/' . $row['t_id']) ?>" class="btn bg-gradient-info btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Detail" data-container="body" data-animation="true"><i class="fa fa-eye"></i></a>
-                                                <a href="<?= base_url('Transaction/edit/' . $row['t_id']) ?>" class="btn bg-gradient-warning btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah Data" data-container="body" data-animation="true"><i class="fa fa-edit"></i></a>
-                                                <a href="<?= base_url('Transaction/delete/' . $row['t_id']) ?>" class="btn bg-gradient-danger btn-tooltip item-delete tombol-hapus" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" data-container="body" data-animation="true"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($data_transaction as $row) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center"><?= $no++; ?></td>
+                                                <td class="text-center"><?= $row['name'] ?></td>
+                                                <td class="text-center"><?= $row['service_name'] ?></td>
+                                                <td class="text-center"><?= $row['date'] ?></td>
+                                                <td class="text-center">Rp. <?= number_format($row['total']) ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('Transaction/detail/' . $row['t_id']) ?>" class="btn bg-gradient-info btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Detail" data-container="body" data-animation="true"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?= base_url('Transaction/edit/' . $row['t_id']) ?>" class="btn bg-gradient-warning btn-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah Data" data-container="body" data-animation="true"><i class="fa fa-edit"></i></a>
+                                                    <a href="<?= base_url('Transaction/delete/' . $row['t_id']) ?>" class="btn bg-gradient-danger btn-tooltip item-delete tombol-hapus" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus Data" data-container="body" data-animation="true"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
 

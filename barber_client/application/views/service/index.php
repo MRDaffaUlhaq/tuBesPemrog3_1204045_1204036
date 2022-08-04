@@ -43,20 +43,24 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
-                                    foreach ($data_service as $row) :
+                                    if ($data_service != false) :
                                     ?>
-                                        <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td><?= $row['service_name'] ?></td>
-                                            <td class="text-center">Rp. <?= number_format($row['price']) ?></td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url('Service/detail/' . $row['service_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
-                                                <a href="<?= base_url('Service/edit/' . $row['service_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('Service/delete/' . $row['service_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($data_service as $row) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center"><?= $no++; ?></td>
+                                                <td><?= $row['service_name'] ?></td>
+                                                <td class="text-center">Rp. <?= number_format($row['price']) ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('Service/detail/' . $row['service_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
+                                                    <a href="<?= base_url('Service/edit/' . $row['service_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
+                                                    <a href="<?= base_url('Service/delete/' . $row['service_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
 

@@ -19,12 +19,16 @@ class Cns extends CI_Controller
         $data['title'] = "List Data Kritik & Saran";
 
         $data['data_cns'] = $this->Cns_model->getAll();
-
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('cns/index', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('cns/index', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     //load detail data to detail view
@@ -35,11 +39,16 @@ class Cns extends CI_Controller
 
         $data['data_cns'] = $this->Cns_model->getById($cns_id);
 
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('cns/detail', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('cns/detail', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     public function add()
@@ -54,13 +63,16 @@ class Cns extends CI_Controller
         $this->form_validation->set_rules('suggest', 'Suggest', 'trim|required');
         $this->form_validation->set_rules('rate', 'Rate', 'trim|required');
 
-
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('cns/add', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('cns/add', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "cns_id" => $this->input->post('cns_id'),
@@ -101,11 +113,15 @@ class Cns extends CI_Controller
         $this->form_validation->set_rules('rate', 'Rate', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('cns/edit', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('cns/edit', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "cns_id" => $this->input->post('cns_id'),

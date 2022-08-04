@@ -19,11 +19,16 @@ class Customer extends CI_Controller
 
         $data['data_customer'] = $this->Customer_model->getAll();
 
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('customer/index', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('customer/index', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     //load detail data to detail view
@@ -33,12 +38,16 @@ class Customer extends CI_Controller
         $data['title'] = "Detail Data Pelanggan";
 
         $data['data_customer'] = $this->Customer_model->getById($customer_id);
-
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('customer/detail', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('customer/detail', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     public function add()
@@ -53,11 +62,15 @@ class Customer extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('customer/add', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('customer/add', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "customer_id" => $this->input->post('customer_id'),
@@ -94,11 +107,15 @@ class Customer extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('customer/edit', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('customer/edit', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "customer_id" => $this->input->post('customer_id'),
