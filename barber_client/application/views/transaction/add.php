@@ -71,7 +71,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-2 ">
-                                <label for="service_id" class="col-form-label">Service</label>
+                                <label for="service_id" class="col-form-label">Pelayanan</label>
                             </div>
 
                             <div class="col-sm-10">
@@ -80,7 +80,7 @@
                                     <?php
                                     foreach ($data_service as $row) :
                                     ?>
-                                        <option value="<?= $row['service_id']; ?>"><?= $row['service_name'] ?></option>
+                                        <option value="<?= $row['service_id']; ?>"> <?= $row['service_name'] ?> - Rp. <?= number_format($row['price']); ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <small class="text-danger">
@@ -88,6 +88,7 @@
                                 </small>
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <div class="col-sm-2">
@@ -114,20 +115,6 @@
                                 </small>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-2">
-                                <label for="total" class="col-form-label">Total</label>
-                            </div>
-
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="total" name="total" value="<?= set_value('total'); ?>">
-                                <small class="text-danger">
-                                    <?php echo form_error('total') ?>
-                                </small>
-                            </div>
-                        </div>
-
 
                         <div class="form-group row">
                             <div class="col-sm-10 offset-md-2">

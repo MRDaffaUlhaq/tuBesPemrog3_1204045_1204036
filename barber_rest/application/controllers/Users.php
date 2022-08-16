@@ -53,14 +53,12 @@ class Users extends RestController
 
         $cek_data = "";
         if ($data['user_id'] != NULL) {
-                $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
-            } elseif ($data['email'] != NULL) {
-                $cek_data = $this->Users_model->cekEmail($this->post('email'));
-            } elseif ($data['username'] != NULL) {
-                $cek_data = $this->Users_model->cekUsername($this->post('username'));
-            } 
-
-        // $register = $this->Users_model->register($data);
+            $cek_data = $this->Users_model->getDataUsers($this->post('user_id'));
+        } elseif ($data['email'] != NULL) {
+            $cek_data = $this->Users_model->cekEmail($this->post('email'));
+        } elseif ($data['username'] != NULL) {
+            $cek_data = $this->Users_model->cekUsername($this->post('username'));
+        }
 
         if (
             $data['username'] == NULL ||
@@ -85,15 +83,15 @@ class Users extends RestController
                 RestController::HTTP_BAD_REQUEST
             );
         } elseif ($newUserId = $this->Users_model->register($data)) {
-                $this->response(
-                            [
-                                'data'  => $newUserId,
-                                'status' => 'Register Berhasil',
-                                'response_code' => RestController::HTTP_OK,
-                                'message' => 'Berhasil Register',
-                            ],
-                            RestController::HTTP_OK
-                        );
+            $this->response(
+                [
+                    'data'  => $newUserId,
+                    'status' => 'Register Berhasil',
+                    'response_code' => RestController::HTTP_OK,
+                    'message' => 'Berhasil Register',
+                ],
+                RestController::HTTP_OK
+            );
         } else {
             $this->response(
                 [
@@ -104,39 +102,15 @@ class Users extends RestController
                 RestController::HTTP_NOT_FOUND
             );
         }
-
     }
 
     public function login_post()
     {
-        // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //     if (isset($_POST['username']) && isset($_POST['password'])) {
-
-        //         $user_login = $this->Users_model->queryLogin($_POST['username'], $_POST['password']);
-        //         $result['user_id']   = null;
-
-        //         if ($user_login->num_rows() == true) {
-        //             $result['value']    = "1";
-        //             $result['pesan']    = "sukses login!";
-        //             $result['user_id']  = $user_login->row()->user_id;
-        //         } else {
-        //             $result['value'] = "2";
-        //             $result['pesan'] = "username atau password salah!";
-        //         }
-        //     } else {
-        //         $result['value'] = "3";
-        //         $result['pesan'] = "beberapa inputan masih kosong!";
-        //     }
-        // } else {
-        //     $result['value'] = "4";
-        //     $result['pesan'] = "invalid request method!";
-        // }
-
-        // echo json_encode($result);
         $username = $this->post('username');
         $password = $this->post('password');
+
         $data = $this->Users_model->login($username, $password);
-        $cek_id = $this->Keys_model->cekUserId($this->post('key'));
+
         if ($data) {
             $this->response(
                 [
@@ -146,19 +120,13 @@ class Users extends RestController
                 ],
                 RestController::HTTP_OK
             );
-        } elseif ($cek_id) {
-            $this->response(
-                [
-                    'data'  => '',
-                    'result' => 'failed user id',
-                    'response_code' => RestController::HTTP_NOT_FOUND
-                ],
-                RestController::HTTP_NOT_FOUND
-            );
         } else {
+            $getUserId = $this->Users_model->loginNoKey($username, $password);
             $this->response(
                 [
-                    'data' => '',
+                    'user_id'  => intval($getUserId),
+                    'username' => $username,
+                    'password' => $password,
                     'result' => 'failed',
                     'response_code' => RestController::HTTP_NOT_FOUND
                 ],
@@ -170,7 +138,7 @@ class Users extends RestController
     public function simpankey_post()
     {
         $data = [
-            'user_id' => $this->post('user_id'),
+            'user_id' => intval($this->input->post('user_id')),
             'key' => $this->post('key')
         ];
 

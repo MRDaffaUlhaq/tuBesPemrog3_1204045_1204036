@@ -47,10 +47,10 @@ class Transactions extends RestController
     public function tr_post()
     {
         $data = array(
-            't_id' => $this->post('t_id'),
-            'customer_id' => $this->post('customer_id'),
-            'emp_id' => $this->post('emp_id'),
-            'service_id' => $this->post('service_id'),
+            't_id' => intval($this->post('t_id')),
+            'customer_id' => intval($this->post('customer_id')),
+            'emp_id' => intval($this->post('emp_id')),
+            'service_id' => intval($this->post('service_id')),
             'date' => $this->post('date'),
             'time' => $this->post('time'),
         );
@@ -64,8 +64,7 @@ class Transactions extends RestController
             $data['customer_id'] == NULL ||
             $data['emp_id'] == NULL ||
             $data['service_id'] == NULL ||
-            $data['date'] == NULL ||
-            $data['total'] == NULL 
+            $data['date'] == NULL
 
         ) {
             $this->response(

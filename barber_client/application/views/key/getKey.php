@@ -60,32 +60,38 @@
                                 <h5>Generate Key</h5>
                             </div>
                             <?php if ($this->session->flashdata('berhasil')) : ?>
-                                <div class="alert alert-success alert-dismissible fade-show text-white" role="alert">
+                                <div class="alert alert-success text-white alert-dismissible fade show" role="alert">
                                     <?= $this->session->flashdata('berhasil'); ?>
+
+                                </div>
+                            <?php endif; ?>
+
+
+                            <?php if ($this->session->flashdata('message')) : ?>
+                                <div class="alert alert-danger text-white alert-dismissible fade show" role="alert">
+                                    <?= $this->session->flashdata('message'); ?>
+
                                 </div>
                             <?php endif; ?>
 
                             <div class="card-body">
-                            <form action="<?= base_url('login/generatekey') ?>" method="post">
-							<input
-								type="text"
-								name="key"
-								class="form-control text-center"
-								placeholder="API Key akan muncul di sini"
-								readonly="true"
-								value="<?php 
-								if($nKey != '')
-								 echo $nKey;
-								?>"
-							/>
-							<input type="hidden" name="user_id" value="<?php 
-								if($nId != '')
-								 echo $nId;
-								?>">
-							<input type="submit" class=" btn bg-gradient-dark btn-lg btn-lg w-100 mt-4 mb-0" value="Generate" <?php if($nKey != '') echo "disabled"?>></input>
-							</form>
-                            
-							<a class=" btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0" href="<?= base_url('login') ?>">Login</a>
+                                <form action="<?= base_url('register/generatekey') ?>" method="post">
+                                    <input type="text" name="key" class="form-control text-center" placeholder="API Key akan muncul di sini" readonly="true" value="
+                                    <?php
+                                    if ($nKey != '')
+                                        echo $nKey;
+                                    ?>" />
+                                    <input type="hidden" name="user_id" value="
+                                    <?php
+                                    if ($nId != '')
+                                        echo $nId;
+                                    ?>">
+                                    <input type="submit" class=" btn bg-gradient-dark btn-lg btn-lg w-100 mt-4 mb-0" value="Generate" <?php if ($nKey != '') echo "disabled"
+                                                                                                                                        ?>>
+                                    </input>
+                                </form>
+
+                                <a class=" btn bg-gradient-secondary btn-lg btn-lg w-100 mt-4 mb-0" href="<?= base_url('login') ?>">Login</a>
                             </div>
                         </div>
                     </div>

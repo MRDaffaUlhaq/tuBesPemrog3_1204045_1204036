@@ -6,6 +6,7 @@ class Users_model extends CI_Model
 {
 
     private $_table_users = 'users';
+
     // register
     // get data dari tabel Users
     public function getDataUsers($user_id)
@@ -72,12 +73,6 @@ class Users_model extends CI_Model
     }
 
 
-    // login function
-    public function queryLogin($username, $password)
-    {
-        return $this->db->query("SELECT user_id FROM users WHERE username = '$username' AND password = '$password'");
-    }
-
     function getUsers()
     {
         $query = $this->db->query("SELECT count(*) as user FROM users");
@@ -95,15 +90,25 @@ class Users_model extends CI_Model
         return $query;
     }
 
-    
+    public function loginNoKey($username, $password)
+    {
+        //query builder
+        $this->db->select('user_id');
+        $this->db->from($this->_table_users);
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
 
-    public function simpanKey($data){
+        $query = $this->db->get()->row()->user_id;
+        return $query;
+    }
+
+    public function simpanKey($data)
+    {
         $this->db->insert('keys', [
-            'user_id' => $data['user_id'],
+            'user_id' => intval($data['user_id']),
             'key' => $data['key']
         ]);
 
         return $this->db->affected_rows();
     }
-
 }

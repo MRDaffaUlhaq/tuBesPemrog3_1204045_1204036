@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,24 +62,24 @@
                             <!-- Message sukses -->
 
                             <div class="card-body">
-                            <form action="<?= base_url('login/tryRegister') ?>" method="post">
+                                <form action="<?= base_url('register/tryRegister') ?>" method="post">
 
-                                <div class="mb-3">
-                                    <input type="text" hidden name="user_id" class="form-control form-control-lg"  aria-label="user_id" >
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="email" required>
-                                </div>
-                               
-                                <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-primary btn-lg btn-lg w-100 mt-4 mb-0">Sign Up</button>
-                                </div>
+                                    <div class="mb-3">
+                                        <input type="text" hidden name="user_id" class="form-control form-control-lg" aria-label="user_id">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" aria-label="Username" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" aria-label="email" required>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn bg-gradient-primary btn-lg btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                    </div>
                                 </form>
                                 <p class="text-sm mt-3 mb-0">Sudah punya akun? <a href="<?= base_url('login') ?>" class="text-dark font-weight-bolder">Sign in</a></p>
                             </div>

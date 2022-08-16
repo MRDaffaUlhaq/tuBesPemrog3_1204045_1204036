@@ -8,7 +8,6 @@ class Register extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Register_model'); //load model 
-        $this->load->model('Employees_model'); //load model 
         $this->load->library('form_validation');
     }
 
@@ -16,43 +15,57 @@ class Register extends CI_Controller
     public function index()
     {
         $data['title'] = "Sign Up";
-        $data['data_emp'] = $this->Employees_model->getAll();
 
-        $this->form_validation->set_rules('username', 'Username', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        $this->form_validation->set_rules('emp_id', 'Emp id', 'trim|required');
+        $this->load->view('auth/register', $data);
+    }
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('auth/register', $data);
+    public function tryRegister()
+    {
+        $data = [
+            "username" => $this->input->post('username'),
+            "password" => $this->input->post('password'),
+            "email" => $this->input->post('email'),
+        ];
+
+        $insert = $this->Register_model->tryRegister($data);
+
+        if ($insert['status'] == 'Register Berhasil') {
+            $this->session->set_flashdata('flash', 'Register Berhasil!');
+            $this->genNewKey($insert['data']);
+        } elseif ($insert['status'] == 'Register Gagal') {
+            $this->session->set_flashdata('message', 'Inputan tidak boleh ada yang kosong!');
+            redirect('register');
         } else {
-            $data = [
-                "username" => $this->input->post('username'),
-                "password" => $this->input->post('password'),
-                "email" => $this->input->post('email'),
-                "emp_id" => $this->input->post('emp_id'),
-                
-            ];
-            $insert = $this->Register_model->save($data);
-            // var_dump($insert);
-            if ($insert['response_code'] === 201) {
-                $this->session->set_flashdata('berhasil', 'Berhasil Registrasi ! Silahkan generate key');
-                redirect('getKey');
-            } elseif ($insert['response_code'] === 400) {
-                $this->session->set_flashdata('message', 'Maaf, sepertinya username atau email sudah digunakan!');
-                redirect('register');
-            } else {
-                $this->session->set_flashdata('message', 'Ups! sepertinya ada yang salah');
-                redirect('register');
-            }
+            $this->session->set_flashdata('message', 'Username atau Email telah digunakan!');
+            redirect('register');
         }
     }
-    public function logout()
-    {
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('user_id');
 
-        $this->session->set_flashdata('berhasil', 'Berhasil Logout');
-        redirect('login');
+    public function genNewKey($nId)
+    {
+        $nKey['nKey'] = '';
+        $nKey['nId'] = $nId;
+        $this->load->view('key/getKey', $nKey);
+    }
+
+    public function generatekey()
+    {
+        $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charsLength = strlen($chars);
+        $keyLength = 7;
+        $nKey['nKey'] = '';
+        for ($i = 0; $i < $keyLength; $i++) {
+            $nKey['nKey'] .= $chars[rand(0, $charsLength - 1)];
+        }
+        $data = [
+            'user_id' => intval($this->input->post('user_id')),
+            'key' => $nKey['nKey']
+        ];
+        $nKey['nId'] = intval($this->input->post('user_id'));
+        $simpanKey = $this->Register_model->simpanKey($data);
+
+        $this->session->set_flashdata('berhasil', 'Generate Berhasil, Silahkan Ke Halaman Login!');
+
+        $this->load->view('key/getKey', $nKey);
     }
 }

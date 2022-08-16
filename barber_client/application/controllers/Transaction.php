@@ -82,16 +82,16 @@ class Transaction extends CI_Controller
             }
         } else {
             $data = [
-                "t_id" => $this->input->post('t_id'),
-                "customer_id" => $this->input->post('customer_id'),
-                "emp_id" => $this->input->post('emp_id'),
-                "service_id" => $this->input->post('service_id'),
+                "t_id" => intval($this->input->post('t_id')),
+                "customer_id" => intval($this->input->post('customer_id')),
+                "emp_id" => intval($this->input->post('emp_id')),
+                "service_id" => intval($this->input->post('service_id')),
                 "date" => $this->input->post('date'),
                 "time" => $this->input->post('time'),
                 "KEY" => "ulbi123"
             ];
-
             $insert = $this->Transaction_model->save($data);
+            var_dump($insert);
             if ($insert['response_code'] === 201) {
                 $this->session->set_flashdata('flash', 'Data Ditambahkan');
                 redirect('Transaction');
@@ -121,7 +121,7 @@ class Transaction extends CI_Controller
         $this->form_validation->set_rules('service_id', 'Service ID', 'trim|required');
         $this->form_validation->set_rules('date', 'Date', 'trim|required');
         $this->form_validation->set_rules('time', 'Time', 'trim|required');
-        
+
 
         if ($this->form_validation->run() == false) {
             if ($this->session->userdata('KEY') != '') {

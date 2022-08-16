@@ -31,4 +31,36 @@ class Register_model extends CI_Model
 
         return $result;
     }
+
+    public function tryRegister($data)
+    {
+        $tryUri = $this->_guzzle = new Client([
+            'base_uri' => 'http://barber_rest.test/index.php/Users/register',
+        ]);
+
+        $response = $this->_guzzle->request('POST', '', [
+            'http_errors' => false,
+            'form_params' => $data
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), TRUE);
+
+        return $result;
+    }
+
+    public function simpanKey($data)
+    {
+        $simpanKeyUri = new Client([
+            'base_uri' => 'http://barber_rest.test/index.php/Users/simpankey',
+        ]);
+
+        $response = $simpanKeyUri->request('POST', '', [
+            'http_errors' => false,
+            'form_params' => $data
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), TRUE);
+
+        return $result;
+    }
 }
