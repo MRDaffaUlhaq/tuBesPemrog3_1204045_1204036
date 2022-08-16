@@ -38,7 +38,7 @@ INSERT INTO `customers` (`customer_id`, `name`, `telp`, `email`) VALUES
 (8,	'Daffa',	'086677776666',	'daffa@gmail.com'),
 (9,	'Rifqi',	'089922223333',	'rifqi@yahoo.com'),
 (11,	'Ilman',	'087722223333',	'ilman@gmail.com'),
-(12,	'alfin',	'+6282127291418',	'alfin@gmail.com');
+(12,	'diki1',	'+6282127291418',	'alfin@gmail.com');
 
 DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
@@ -94,12 +94,10 @@ CREATE TABLE `keys` (
 
 INSERT INTO `keys` (`id`, `user_id`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip_addresses`, `date_created`) VALUES
 (1,	1,	'ulbi123',	1,	0,	0,	NULL,	1),
-(2,	NULL,	'jopares147',	1,	0,	0,	NULL,	1),
-(3,	NULL,	'semangatpagi',	1,	0,	0,	NULL,	2022),
-(4,	NULL,	'sipaling',	1,	0,	0,	NULL,	2022),
-(5,	NULL,	'sipalingKey',	1,	0,	0,	NULL,	22),
-(6,	NULL,	'sipalingKey123',	1,	0,	0,	NULL,	2022),
-(7,	NULL,	'sipalingKey1',	1,	0,	0,	NULL,	2022);
+(9,	24,	'HaK8v9o',	0,	0,	0,	NULL,	0),
+(10,	25,	'jubYqgf',	0,	0,	0,	NULL,	0),
+(18,	75,	'ZsHmfQv',	0,	0,	0,	NULL,	0),
+(19,	76,	'fOLOwW0',	0,	0,	0,	NULL,	0);
 
 DROP TABLE IF EXISTS `services`;
 CREATE TABLE `services` (
@@ -127,7 +125,6 @@ CREATE TABLE `transactions` (
   `service_id` int(5) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
-  `total` int(255) NOT NULL,
   PRIMARY KEY (`t_id`),
   KEY `customer_id` (`customer_id`),
   KEY `emp_id` (`emp_id`),
@@ -137,30 +134,29 @@ CREATE TABLE `transactions` (
   CONSTRAINT `transactions_ibfk_7` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `transactions` (`t_id`, `customer_id`, `emp_id`, `service_id`, `date`, `time`, `total`) VALUES
-(13,	1,	2,	1,	'2022-06-30',	'00:00:21',	15000),
-(14,	1,	3,	6,	'2022-07-21',	'10:49:00',	14000),
-(15,	9,	1,	1,	'2019-01-29',	'04:53:00',	15000),
-(16,	11,	5,	7,	'2022-08-01',	'11:46:00',	15000);
+INSERT INTO `transactions` (`t_id`, `customer_id`, `emp_id`, `service_id`, `date`, `time`) VALUES
+(13,	1,	2,	1,	'2022-06-30',	'00:00:21'),
+(14,	1,	3,	6,	'2022-07-21',	'10:49:00'),
+(15,	9,	1,	1,	'2019-01-29',	'04:53:00'),
+(16,	11,	5,	7,	'2022-08-01',	'11:46:00'),
+(17,	11,	2,	3,	'2022-08-12',	'13:19:00');
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `user_id` int(5) NOT NULL AUTO_INCREMENT,
-  `emp_id` int(5) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  KEY `emp_id` (`emp_id`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `employees` (`emp_id`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `users` (`user_id`, `emp_id`, `username`, `password`, `email`) VALUES
-(1,	1,	'daffa',	'123',	'daffa@gmail.com'),
-(2,	NULL,	'user1',	'user1',	'user1@gmail.com'),
-(3,	NULL,	'daul',	'123',	'daul@asoy.com'),
-(4,	1,	'user2',	'123',	'user@user.com'),
-(6,	1,	'daffa',	'123',	'difa09@gmail.com'),
-(7,	1,	'naofal',	'123',	'naofal@gmail.com');
+INSERT INTO `users` (`user_id`, `username`, `password`, `email`) VALUES
+(1,	'daffa',	'123',	'daffa@gmail.com'),
+(24,	'carl',	'123',	'carl10@gmail.com'),
+(25,	'ujang',	'123',	'ujang@gmail.com'),
+(74,	'samsudin',	'123',	'samsudin@gmail.com'),
+(75,	'nawafnaofal',	'123',	'nawaf9@gmail.com'),
+(76,	'naofalnawaf',	'123mantap',	'nawaf0@gmail.com'),
+(77,	'ujangwahyudin',	'123456',	'wahyu@gmail.com');
 
--- 2022-08-02 14:40:10
+-- 2022-08-16 11:34:32

@@ -37,11 +37,11 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select name="customer_id" class="form-select" id="customer_id" aria-label="Default select example">
-                                        <option value="<?= $data_transaction['customer_id']; ?>"><?= $data_transaction['name']; ?></option>
+
                                         <?php
                                         foreach ($data_customer as $row) :
                                         ?>
-                                            <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?> </option>
+                                            <option value="<?php echo $row['customer_id']; ?>" <?php if ($data_transaction['customer_id'] == $row['customer_id']) echo 'selected="selected"'; ?>><?php echo $row['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="text-danger">
@@ -56,11 +56,11 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select name="emp_id" class="form-select" id="emp_id" aria-label="Default select example">
-                                        <option value="<?= $data_transaction['emp_id']; ?>"><?= $data_transaction['emp_name']; ?> </option>
                                         <?php
                                         foreach ($data_employees as $row) :
                                         ?>
-                                            <option value="<?= $row['emp_id']; ?>"><?= $row['emp_name'] ?> - <?= $row['position'] ?></option>
+                                            <option value="<?php echo $row['emp_id']; ?>" <?php if ($data_transaction['emp_id'] == $row['emp_id']) echo 'selected="selected"'; ?>><?php echo $row['emp_name']; ?></option>
+
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="text-danger">
@@ -76,11 +76,10 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select name="service_id" class="form-select" id="service_id" aria-label="Default select example">
-                                        <option value="<?= $data_transaction['service_id']; ?>"><?= $data_transaction['service_name']; ?></option>
                                         <?php
                                         foreach ($data_service as $row) :
                                         ?>
-                                            <option value="<?= $row['service_id']; ?>"><?= $row['service_name'] ?></option>
+                                            <option value="<?php echo $row['service_id']; ?>" <?php if ($data_transaction['service_id'] == $row['service_id']) echo 'selected="selected"'; ?>><?php echo $row['service_name']; ?> - Rp. <?php echo number_format($row['price']); ?> </option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="text-danger">
@@ -112,19 +111,6 @@
                                     </small>
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <div class="col-sm-2">
-                                    <label for="total" class="col-form-label">Total</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="total" name="total" value="<?= $data_transaction['total']; ?>">
-                                    <small class="text-danger">
-                                        <?php echo form_error('total') ?>
-                                    </small>
-                                </div>
-                            </div>
-
 
                             <div class="form-group row">
                                 <div class="col-sm-10 offset-md-2">

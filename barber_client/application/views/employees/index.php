@@ -42,20 +42,24 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
-                                    foreach ($data_employees as $row) :
+                                    if ($data_employees != false) :
                                     ?>
-                                        <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td><?= $row['emp_name'] ?></td>
-                                            <td><?= $row['position'] ?></td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url('Employees/detail/' . $row['emp_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
-                                                <a href="<?= base_url('Employees/edit/' . $row['emp_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('Employees/delete/' . $row['emp_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($data_employees as $row) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center"><?= $no++; ?></td>
+                                                <td><?= $row['emp_name'] ?></td>
+                                                <td><?= $row['position'] ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('Employees/detail/' . $row['emp_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-info"></i></a>
+                                                    <a href="<?= base_url('Employees/edit/' . $row['emp_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
+                                                    <a href="<?= base_url('Employees/delete/' . $row['emp_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
 

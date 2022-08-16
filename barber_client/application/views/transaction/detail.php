@@ -29,7 +29,7 @@
                                 <div class="col-md-6">
                                     <p class="card-text p-2">Tanggal : <strong><?= $row['date'] ?></strong></p>
                                     <p class="card-text p-2">Waktu : <strong><?= $row['time'] ?></strong></p>
-                                    <p class="card-text p-2">Total Pembayaran :<strong>Rp. <?= number_format($row['total']) ?></strong></p>
+                                    <p class="card-text p-2">Total Pembayaran :<strong>Rp. <?= number_format($row['price']) ?></strong></p>
                                 </div>
                             </div>
                             <div class="row pl-4 pr-4 p-3">

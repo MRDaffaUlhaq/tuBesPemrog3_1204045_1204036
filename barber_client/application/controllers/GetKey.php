@@ -15,10 +15,13 @@ class GetKey extends CI_Controller
 
         $data['title'] = "Generate API Key";
 
-        // $data['data_key'] = $this->GetKey_model->getAll();
-
-        //load to view
-        $this->load->view('key/getKey', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('key/getKey', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! register dulu ya');
+            redirect('register');
+        }
     }
     function generate()
     {

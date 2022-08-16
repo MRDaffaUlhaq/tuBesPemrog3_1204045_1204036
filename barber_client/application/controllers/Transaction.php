@@ -21,16 +21,17 @@ class Transaction extends CI_Controller
         $data['title'] = "List Data Transaksi";
 
         $data['data_transaction'] = $this->Transaction_model->getAll();
-
-        // if ($data['response_code'] === 404) {
-        //     redirect('Home');
-        // }
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('transaction/index', $data);
-
-        $this->load->view('templates/footer', $data);
+        $data['data_service'] = $this->Service_model->getAll();
+        // handling jika user tidak melakukan login, maka tidak dapat mengakses halaman, maka akan dialihkan ke halaman login
+        if ($this->session->userdata('KEY') != '') {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('transaction/index', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     //load detail data to detail view
@@ -41,11 +42,16 @@ class Transaction extends CI_Controller
 
         $data['data_transaction'] = $this->Transaction_model->getById($t_id);
 
-        //load to view
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu', $data);
-        $this->load->view('transaction/detail', $data);
-        $this->load->view('templates/footer', $data);
+        if ($this->session->userdata('KEY') != '') {
+            //load to view
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu', $data);
+            $this->load->view('transaction/detail', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Ups! kamu belum login');
+            redirect('login');
+        }
     }
 
     public function add()
@@ -62,15 +68,18 @@ class Transaction extends CI_Controller
         $this->form_validation->set_rules('service_id', 'Service ID', 'trim|required');
         $this->form_validation->set_rules('date', 'Date', 'trim|required');
         $this->form_validation->set_rules('time', 'Time', 'trim|required');
-        $this->form_validation->set_rules('total', 'Total', 'trim|required');
 
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('transaction/add', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('transaction/add', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "t_id" => $this->input->post('t_id'),
@@ -79,7 +88,6 @@ class Transaction extends CI_Controller
                 "service_id" => $this->input->post('service_id'),
                 "date" => $this->input->post('date'),
                 "time" => $this->input->post('time'),
-                "total" => $this->input->post('total'),
                 "KEY" => "ulbi123"
             ];
 
@@ -113,14 +121,18 @@ class Transaction extends CI_Controller
         $this->form_validation->set_rules('service_id', 'Service ID', 'trim|required');
         $this->form_validation->set_rules('date', 'Date', 'trim|required');
         $this->form_validation->set_rules('time', 'Time', 'trim|required');
-        $this->form_validation->set_rules('total', 'Total', 'trim|required');
+        
 
         if ($this->form_validation->run() == false) {
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
-            $this->load->view('transaction/edit', $data);
-            $this->load->view('templates/footer', $data);
+            if ($this->session->userdata('KEY') != '') {
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/menu', $data);
+                $this->load->view('transaction/edit', $data);
+                $this->load->view('templates/footer', $data);
+            } else {
+                $this->session->set_flashdata('message', 'Ups! kamu belum login');
+                redirect('login');
+            }
         } else {
             $data = [
                 "t_id" => $this->input->post('t_id'),
@@ -129,7 +141,6 @@ class Transaction extends CI_Controller
                 "service_id" => $this->input->post('service_id'),
                 "date" => $this->input->post('date'),
                 "time" => $this->input->post('time'),
-                "total" => $this->input->post('total'),
                 "KEY" => "ulbi123"
             ];
 

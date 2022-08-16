@@ -53,7 +53,6 @@ class Transactions extends RestController
             'service_id' => $this->post('service_id'),
             'date' => $this->post('date'),
             'time' => $this->post('time'),
-            'total' => $this->post('total')
         );
         $cek_data = "";
         if ($data['t_id'] != NULL) {
@@ -66,8 +65,8 @@ class Transactions extends RestController
             $data['emp_id'] == NULL ||
             $data['service_id'] == NULL ||
             $data['date'] == NULL ||
-            $data['total'] == NULL ||
-            $data['time'] == NULL
+            $data['total'] == NULL 
+
         ) {
             $this->response(
                 [
@@ -120,7 +119,6 @@ class Transactions extends RestController
             'service_id' => $this->put('service_id'),
             'date' => $this->put('date'),
             'time' => $this->put('time'),
-            'total' => $this->put('total')
         );
         //Jika field t_id tidak diisi
         if (
@@ -129,7 +127,6 @@ class Transactions extends RestController
             $data['emp_id'] == NULL ||
             $data['service_id'] == NULL ||
             $data['date'] == NULL ||
-            $data['total'] == NULL ||
             $data['time'] == NULL
         ) {
             $this->response(

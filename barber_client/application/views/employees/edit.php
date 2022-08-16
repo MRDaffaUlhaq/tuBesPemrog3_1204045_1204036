@@ -36,11 +36,10 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select name="position_id" class="form-select" id="position_id" aria-label="Default select example">
-                                        <option value="<?= $data_employees['emp_id']; ?>"><?= $data_employees['position']; ?></option>
                                         <?php
                                         foreach ($data_jabatan as $row) :
                                         ?>
-                                            <option value="<?= $row['position_id']; ?>"><?= $row['position'] ?></option>
+                                            <option value="<?php echo $row['position_id']; ?>" <?php if ($data_employees['position_id'] == $row['position_id']) echo 'selected="selected"'; ?>><?php echo $row['position']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <!-- <input type="text" class="form-control" id="position_id" name="position_id" value=" <?= $data_employees['position_id']; ?>"> -->

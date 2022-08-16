@@ -37,11 +37,11 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <select name="customer_id" class="form-select" id="customer_id" aria-label="Default select example">
-                                        <option value="<?= $data_cns['customer_id']; ?>"><?= $data_cns['name']; ?></option>
+                                        <!-- <option value="<?= $data_cns['customer_id']; ?>"><?= $data_cns['name']; ?></option> -->
                                         <?php
                                         foreach ($data_allCns as $row) :
                                         ?>
-                                            <option value="<?= $row['customer_id']; ?>"><?= $row['name'] ?></option>
+                                            <option value="<?php echo $row['customer_id']; ?>" <?php if ($data_cns['customer_id'] == $row['customer_id']) echo 'selected="selected"'; ?>><?php echo $row['name']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="text-danger">

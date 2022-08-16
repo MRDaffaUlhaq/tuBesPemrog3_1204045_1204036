@@ -42,20 +42,24 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no = 1;
-                                    foreach ($data_customer as $row) :
+                                    if ($data_customer != false) :
                                     ?>
-                                        <tr>
-                                            <td class="text-center"><?= $no++; ?></td>
-                                            <td class="text-center"><?= $row['name'] ?></td>
-                                            <td class="text-center"><?= $row['telp'] ?></td>
-                                            <td class="text-center">
-                                                <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-eye "></i></a>
-                                                <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
-                                                <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash "></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($data_customer as $row) :
+                                        ?>
+                                            <tr>
+                                                <td class="text-center"><?= $no++; ?></td>
+                                                <td class="text-center"><?= $row['name'] ?></td>
+                                                <td class="text-center"><?= $row['telp'] ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?= base_url('customer/detail/' . $row['customer_id']) ?>" class="btn bg-gradient-info"><i class="fa fa-eye "></i></a>
+                                                    <a href="<?= base_url('customer/edit/' . $row['customer_id']) ?>" class="btn bg-gradient-warning"><i class="fa fa-edit "></i></a>
+                                                    <a href="<?= base_url('customer/delete/' . $row['customer_id']) ?>" class="btn bg-gradient-danger item-delete tombol-hapus"><i class="fa fa-trash "></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
 
                                 </tbody>
                             </table>
